@@ -12,7 +12,6 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isScrollingUp, setIsScrollingUp] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const navItems = [
@@ -28,12 +27,9 @@ const Header = () => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       
-      // Detect scroll direction
-      setIsScrollingUp(scrollPosition < lastScrollY);
-      setLastScrollY(scrollPosition);
-      
-      // Set header background based on scroll position
+      // Set scroll state for background opacity
       setIsScrolled(scrollPosition > 50);
+      setLastScrollY(scrollPosition);
       
       if (location.pathname === "/") {
         const sections = ["hero", "services", "about", "team", "contact"];
@@ -78,7 +74,7 @@ const Header = () => {
     <header 
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled 
-          ? `${isScrollingUp ? "transform-none" : "-translate-y-full"} bg-background/85 backdrop-blur-md shadow-md dark:bg-background/90` 
+          ? "bg-background/85 backdrop-blur-md shadow-md dark:bg-background/90" 
           : "bg-transparent"
       }`}
     >
