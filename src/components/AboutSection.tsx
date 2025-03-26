@@ -1,94 +1,102 @@
 
 import { useLanguage } from "@/components/LanguageProvider";
+import { Card, CardContent } from "@/components/ui/card";
+import { Building, BoxesIcon, Boxes, CircleDashed } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
-import { Heart, Globe, Users, Truck } from "lucide-react";
 
 const AboutSection = () => {
   const { t } = useLanguage();
 
   const stats = [
     {
-      id: "years",
       value: t("home.about.years"),
       label: t("home.about.yearsText"),
-      icon: <Heart className="h-8 w-8 text-primary" />,
+      delay: 100,
     },
     {
-      id: "countries",
       value: t("home.about.countries"),
       label: t("home.about.countriesText"),
-      icon: <Globe className="h-8 w-8 text-primary" />,
+      delay: 200,
     },
     {
-      id: "clients",
       value: t("home.about.clients"),
       label: t("home.about.clientsText"),
-      icon: <Users className="h-8 w-8 text-primary" />,
+      delay: 300,
     },
     {
-      id: "shipments",
       value: t("home.about.shipments"),
       label: t("home.about.shipmentsText"),
-      icon: <Truck className="h-8 w-8 text-primary" />,
+      delay: 400,
+    },
+  ];
+
+  const features = [
+    {
+      icon: <Building className="h-10 w-10 text-primary" />,
+      title: t("home.about.offices"),
+      description: t("home.about.officesText"),
+    },
+    {
+      icon: <BoxesIcon className="h-10 w-10 text-primary" />,
+      title: t("home.about.components"),
+      description: t("home.about.componentsText"),
+    },
+    {
+      icon: <CircleDashed className="h-10 w-10 text-primary" />,
+      title: t("home.about.approach"),
+      description: t("home.about.approachText"),
     },
   ];
 
   return (
-    <section id="about" className="py-24 bg-background relative">
+    <section id="about" className="py-24 bg-muted/30">
       <div className="container px-4 mx-auto">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
-          <div className="lg:w-1/2">
-            <ScrollReveal>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                {t("home.about.title")}
-              </h2>
-            </ScrollReveal>
-            <ScrollReveal delay={200}>
-              <p className="text-muted-foreground text-lg mb-4">
-                {t("home.about.subtitle")}
-              </p>
-            </ScrollReveal>
-            <ScrollReveal delay={300}>
-              <p className="mb-6">
-                {t("home.about.description")}
-              </p>
-            </ScrollReveal>
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              {t("home.about.title")}
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={200}>
+            <p className="text-lg text-muted-foreground">
+              {t("home.about.subtitle")}
+            </p>
+          </ScrollReveal>
+        </div>
 
-            <div className="grid grid-cols-2 gap-6 mt-8">
-              {stats.map((stat, idx) => (
-                <ScrollReveal key={stat.id} delay={400 + idx * 100}>
-                  <div className="flex flex-col items-center p-4 bg-accent/50 rounded-lg shadow-sm">
-                    <div className="p-3 rounded-full bg-accent mb-3">
-                      {stat.icon}
+        {/* Features */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          {features.map((feature, index) => (
+            <ScrollReveal key={index} delay={200 + index * 100}>
+              <Card className="h-full hover:shadow-md transition-shadow">
+                <CardContent className="pt-6">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="mb-4 p-3 rounded-full bg-primary/10">
+                      {feature.icon}
                     </div>
-                    <h3 className="text-2xl font-bold text-foreground mb-1">
-                      {stat.value}
-                    </h3>
-                    <p className="text-muted-foreground text-center">
-                      {stat.label}
-                    </p>
+                    <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                    <p className="text-muted-foreground">{feature.description}</p>
                   </div>
-                </ScrollReveal>
-              ))}
-            </div>
-          </div>
+                </CardContent>
+              </Card>
+            </ScrollReveal>
+          ))}
+        </div>
 
-          <ScrollReveal variant="right" className="lg:w-1/2">
-            <div className="relative w-full aspect-video overflow-hidden rounded-lg shadow-lg">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-primary-400 opacity-90"></div>
-              <img
-                src="/lovable-uploads/9f7fd030-fdb5-47ee-9731-453531e3bfd6.png"
-                alt="Global Logistics"
-                className="w-full h-full object-cover object-center mix-blend-overlay"
-              />
-              
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center cursor-pointer hover:bg-white transition-colors duration-300">
-                  <div className="w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-16 border-l-primary ml-1"></div>
+        {/* Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+          {stats.map((stat, index) => (
+            <ScrollReveal key={index} delay={stat.delay}>
+              <div className="bg-background rounded-lg p-6 text-center shadow-sm">
+                <div className="text-2xl md:text-3xl font-bold text-primary mb-1">
+                  {stat.value}
+                </div>
+                <div className="text-sm md:text-base text-muted-foreground">
+                  {stat.label}
                 </div>
               </div>
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
+          ))}
         </div>
       </div>
     </section>

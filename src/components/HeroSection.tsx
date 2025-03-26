@@ -1,7 +1,7 @@
 
 import { useLanguage } from "@/components/LanguageProvider";
 import { Button } from "@/components/ui/button";
-import { ArrowDownCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const HeroSection = () => {
@@ -49,10 +49,10 @@ const HeroSection = () => {
             <Button
               size="lg"
               onClick={scrollToServices}
-              className="text-base bg-secondary hover:bg-secondary/90"
+              className="text-base bg-secondary hover:bg-secondary/90 group"
             >
               {t("home.hero.cta")}
-              <ArrowDownCircle className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </ScrollReveal>
         </div>

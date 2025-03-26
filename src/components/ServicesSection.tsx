@@ -2,7 +2,7 @@
 import { useLanguage } from "@/components/LanguageProvider";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Truck, Shield, Package, FileCheck } from "lucide-react";
+import { ShieldCheck, HeadsetHelp, BarChart3, Users, Award, Clock } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const ServicesSection = () => {
@@ -10,28 +10,40 @@ const ServicesSection = () => {
 
   const services = [
     {
-      id: "logistics",
-      icon: <Truck className="h-8 w-8 text-primary" />,
-      title: t("home.services.efficientLogistics.title"),
-      description: t("home.services.efficientLogistics.description"),
+      id: "originalComponents",
+      icon: <ShieldCheck className="h-8 w-8 text-primary" />,
+      title: t("home.services.originalComponents.title"),
+      description: t("home.services.originalComponents.description"),
     },
     {
-      id: "quality",
-      icon: <Shield className="h-8 w-8 text-primary" />,
-      title: t("home.services.qualityControl.title"),
-      description: t("home.services.qualityControl.description"),
+      id: "technicalSupport",
+      icon: <HeadsetHelp className="h-8 w-8 text-primary" />,
+      title: t("home.services.technicalSupport.title"),
+      description: t("home.services.technicalSupport.description"),
     },
     {
-      id: "customs",
-      icon: <FileCheck className="h-8 w-8 text-primary" />,
-      title: t("home.services.customClearance.title"),
-      description: t("home.services.customClearance.description"),
+      id: "flexiblePricing",
+      icon: <BarChart3 className="h-8 w-8 text-primary" />,
+      title: t("home.services.flexiblePricing.title"),
+      description: t("home.services.flexiblePricing.description"),
     },
     {
-      id: "delivery",
-      icon: <Package className="h-8 w-8 text-primary" />,
-      title: t("home.services.doorToDoor.title"),
-      description: t("home.services.doorToDoor.description"),
+      id: "customApproach",
+      icon: <Users className="h-8 w-8 text-primary" />,
+      title: t("home.services.customApproach.title"),
+      description: t("home.services.customApproach.description"),
+    },
+    {
+      id: "experience",
+      icon: <Award className="h-8 w-8 text-primary" />,
+      title: t("home.services.experience.title"),
+      description: t("home.services.experience.description"),
+    },
+    {
+      id: "fastDelivery",
+      icon: <Clock className="h-8 w-8 text-primary" />,
+      title: t("home.services.fastDelivery.title"),
+      description: t("home.services.fastDelivery.description"),
     },
   ];
 
@@ -51,7 +63,7 @@ const ServicesSection = () => {
           </ScrollReveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
           {services.map((service, idx) => (
             <ScrollReveal key={service.id} delay={300 + idx * 100}>
               <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 overflow-hidden group">

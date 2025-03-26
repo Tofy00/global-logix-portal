@@ -13,32 +13,24 @@ const TeamSection = () => {
       name: t("home.team.member1.name"),
       position: t("home.team.member1.position"),
       bio: t("home.team.member1.bio"),
-      image: "",
-      initials: "АП",
+      image: "/team/photo_2025-03-26_19-14-53.jpg",
+      initials: "РА",
     },
     {
       id: "member2",
       name: t("home.team.member2.name"),
       position: t("home.team.member2.position"),
       bio: t("home.team.member2.bio"),
-      image: "",
-      initials: "ЕС",
+      image: "/team/photo_2025-03-26_19-14-30.jpg", 
+      initials: "МА",
     },
     {
       id: "member3",
       name: t("home.team.member3.name"),
       position: t("home.team.member3.position"),
       bio: t("home.team.member3.bio"),
-      image: "",
-      initials: "МИ",
-    },
-    {
-      id: "member4",
-      name: t("home.team.member4.name"),
-      position: t("home.team.member4.position"),
-      bio: t("home.team.member4.bio"),
-      image: "",
-      initials: "ОС",
+      image: "/team/photo_2025-03-26_19-14-36.jpg",
+      initials: "ЗС",
     },
   ];
 
@@ -47,7 +39,6 @@ const TeamSection = () => {
     "from-blue-500 to-purple-500",
     "from-green-500 to-emerald-500",
     "from-orange-500 to-amber-500",
-    "from-pink-500 to-rose-500",
   ];
 
   return (
@@ -66,12 +57,12 @@ const TeamSection = () => {
           </ScrollReveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {team.map((member, idx) => (
             <ScrollReveal key={member.id} delay={300 + idx * 100}>
               <Card className="text-center overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full">
                 <CardContent className="pt-6 pb-4 px-4 flex flex-col items-center">
-                  <Avatar className="h-24 w-24 mb-4 border-4 border-background shadow-md">
+                  <Avatar className="h-32 w-32 mb-4 border-4 border-background shadow-md">
                     {member.image ? (
                       <AvatarImage src={member.image} alt={member.name} />
                     ) : (
@@ -80,13 +71,13 @@ const TeamSection = () => {
                       </AvatarFallback>
                     )}
                   </Avatar>
-                  <CardTitle className="mt-2 mb-1 font-medium text-foreground">
+                  <CardTitle className="mt-4 mb-1 font-medium text-foreground text-xl">
                     {member.name}
                   </CardTitle>
-                  <CardDescription className="text-primary font-medium mb-3">
+                  <CardDescription className="text-primary font-medium mb-3 text-md">
                     {member.position}
                   </CardDescription>
-                  <p className="text-muted-foreground text-sm">
+                  <p className="text-muted-foreground">
                     {member.bio}
                   </p>
                 </CardContent>
