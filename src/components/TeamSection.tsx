@@ -1,0 +1,102 @@
+
+import { useLanguage } from "@/components/LanguageProvider";
+import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import ScrollReveal from "@/components/ScrollReveal";
+
+const TeamSection = () => {
+  const { t } = useLanguage();
+
+  const team = [
+    {
+      id: "member1",
+      name: t("home.team.member1.name"),
+      position: t("home.team.member1.position"),
+      bio: t("home.team.member1.bio"),
+      image: "",
+      initials: "АП",
+    },
+    {
+      id: "member2",
+      name: t("home.team.member2.name"),
+      position: t("home.team.member2.position"),
+      bio: t("home.team.member2.bio"),
+      image: "",
+      initials: "ЕС",
+    },
+    {
+      id: "member3",
+      name: t("home.team.member3.name"),
+      position: t("home.team.member3.position"),
+      bio: t("home.team.member3.bio"),
+      image: "",
+      initials: "МИ",
+    },
+    {
+      id: "member4",
+      name: t("home.team.member4.name"),
+      position: t("home.team.member4.position"),
+      bio: t("home.team.member4.bio"),
+      image: "",
+      initials: "ОС",
+    },
+  ];
+
+  // Gradient colors for avatar fallbacks
+  const gradients = [
+    "from-blue-500 to-purple-500",
+    "from-green-500 to-emerald-500",
+    "from-orange-500 to-amber-500",
+    "from-pink-500 to-rose-500",
+  ];
+
+  return (
+    <section id="team" className="py-24 bg-accent">
+      <div className="container px-4 mx-auto">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              {t("home.team.title")}
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={200}>
+            <p className="text-lg text-muted-foreground">
+              {t("home.team.subtitle")}
+            </p>
+          </ScrollReveal>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {team.map((member, idx) => (
+            <ScrollReveal key={member.id} delay={300 + idx * 100}>
+              <Card className="text-center overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full">
+                <CardContent className="pt-6 pb-4 px-4 flex flex-col items-center">
+                  <Avatar className="h-24 w-24 mb-4 border-4 border-background shadow-md">
+                    {member.image ? (
+                      <AvatarImage src={member.image} alt={member.name} />
+                    ) : (
+                      <AvatarFallback className={`text-xl font-medium bg-gradient-to-br ${gradients[idx % gradients.length]} text-white`}>
+                        {member.initials}
+                      </AvatarFallback>
+                    )}
+                  </Avatar>
+                  <CardTitle className="mt-2 mb-1 font-medium text-foreground">
+                    {member.name}
+                  </CardTitle>
+                  <CardDescription className="text-primary font-medium mb-3">
+                    {member.position}
+                  </CardDescription>
+                  <p className="text-muted-foreground text-sm">
+                    {member.bio}
+                  </p>
+                </CardContent>
+              </Card>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default TeamSection;
