@@ -26,13 +26,13 @@ const MobileMenu = ({
   if (!isOpen) return null;
   
   return (
-    <div className="md:hidden bg-background/95 backdrop-blur-lg shadow-lg animate-fade-in">
+    <div className="md:hidden bg-background/95 backdrop-blur-lg shadow-lg animate-in slide-in-from-top duration-300">
       <div className="container py-4 flex flex-col space-y-2">
         {navItems.map((item) => (
           <Link
             key={item.id}
             to={item.path}
-            className={`px-4 py-3 rounded-md transition-all duration-300 ${
+            className={`px-4 py-3 rounded-md transition-all duration-300 relative ${
               (item.path === location.pathname || (location.pathname === "/" && activeSection === item.section))
                 ? "bg-primary/10 text-primary font-medium border-l-2 border-primary pl-3"
                 : "text-foreground/80 hover:text-foreground hover:bg-accent"

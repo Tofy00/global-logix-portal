@@ -12,6 +12,8 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrollingUp, setIsScrollingUp] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const navItems = [
     { id: "home", label: t("nav.home"), path: "/", section: "hero" },
@@ -26,6 +28,11 @@ const Header = () => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       
+      // Detect scroll direction
+      setIsScrollingUp(scrollPosition < lastScrollY);
+      setLastScrollY(scrollPosition);
+      
+      // Set header background based on scroll position
       setIsScrolled(scrollPosition > 50);
       
       if (location.pathname === "/") {
@@ -54,16 +61,25 @@ const Header = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [location.pathname]);
+  }, [location.pathname, lastScrollY]);
 
-  const handleNavLinkClick = () => {
+  const handleNavLinkClick = (section: string) => {
     setIsMenuOpen(false);
+    
+    if (location.pathname === "/" && section) {
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
   };
 
   return (
     <header 
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/90 backdrop-blur-md shadow-md" : "bg-transparent"
+        isScrolled 
+          ? `${isScrollingUp ? "transform-none" : "-translate-y-full"} bg-background/85 backdrop-blur-md shadow-md dark:bg-background/90` 
+          : "bg-transparent"
       }`}
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
@@ -81,7 +97,7 @@ const Header = () => {
               label={item.label}
               path={item.path}
               isActive={item.path === location.pathname || (location.pathname === "/" && activeSection === item.section)}
-              onClick={handleNavLinkClick}
+              onClick={() => handleNavLinkClick(item.section)}
             />
           ))}
 
@@ -108,7 +124,7 @@ const Header = () => {
         navItems={navItems}
         activeSection={activeSection}
         location={location}
-        onNavLinkClick={handleNavLinkClick}
+        onNavLinkClick={() => setIsMenuOpen(false)}
       />
     </header>
   );

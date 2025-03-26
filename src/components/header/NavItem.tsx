@@ -14,14 +14,19 @@ const NavItem = ({ id, label, path, isActive, onClick }: NavItemProps) => {
     <Link
       key={id}
       to={path}
-      className={`px-3 py-2 text-sm rounded-md transition-all duration-300 relative ${
+      className={`px-3 py-2 text-sm rounded-md transition-all duration-300 relative group ${
         isActive
-          ? "text-primary font-medium after:content-[''] after:absolute after:bottom-0 after:left-1/4 after:w-1/2 after:h-0.5 after:bg-primary after:rounded-full" 
-          : "text-foreground/80 hover:text-foreground hover:bg-accent"
+          ? "text-primary font-medium" 
+          : "text-foreground/80 hover:text-foreground hover:bg-accent/50"
       }`}
       onClick={onClick}
     >
       {label}
+      <span 
+        className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary rounded-full transition-all duration-300 ${
+          isActive ? "w-1/2" : "w-0 group-hover:w-1/3"
+        }`}
+      />
     </Link>
   );
 };

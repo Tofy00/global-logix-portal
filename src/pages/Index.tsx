@@ -7,13 +7,13 @@ import ContactSection from "@/components/ContactSection";
 
 const Index = () => {
   return (
-    <>
+    <main className="flex flex-col">
       <HeroSection />
       <ServicesSection />
       <AboutSection />
       <TeamSection />
       <ContactSection />
-    </>
+    </main>
   );
 };
 

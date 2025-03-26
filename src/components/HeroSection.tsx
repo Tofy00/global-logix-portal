@@ -27,8 +27,8 @@ const HeroSection = () => {
           backgroundAttachment: "fixed",
         }}
       >
-        {/* Overlay - reduced blur, increased darkness for better text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-950/90 via-primary-900/80 to-primary-900/70 dark:from-primary-950/95 dark:to-primary-900/85"></div>
+        {/* Darker overlay for better text readability, regardless of theme */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/50"></div>
       </div>
 
       <div className="container relative z-10 mx-auto px-4 py-32 text-white">
