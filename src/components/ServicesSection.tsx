@@ -2,7 +2,7 @@
 import { useLanguage } from "@/components/LanguageProvider";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ShieldCheck, Headphones, BarChart3, Users, Award, Clock } from "lucide-react";
+import { ShieldCheck, HeadphonesEar, BarChart3, Users, Award, Truck } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const ServicesSection = () => {
@@ -17,7 +17,7 @@ const ServicesSection = () => {
     },
     {
       id: "technicalSupport",
-      icon: <Headphones className="h-8 w-8 text-primary" />,
+      icon: <HeadphonesEar className="h-8 w-8 text-primary" />,
       title: t("home.services.technicalSupport.title"),
       description: t("home.services.technicalSupport.description"),
     },
@@ -41,7 +41,7 @@ const ServicesSection = () => {
     },
     {
       id: "fastDelivery",
-      icon: <Clock className="h-8 w-8 text-primary" />,
+      icon: <Truck className="h-8 w-8 text-primary" />,
       title: t("home.services.fastDelivery.title"),
       description: t("home.services.fastDelivery.description"),
     },
@@ -66,7 +66,7 @@ const ServicesSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
           {services.map((service, idx) => (
             <ScrollReveal key={service.id} delay={300 + idx * 100}>
-              <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300 overflow-hidden group">
+              <Card className="h-full flex flex-col hover:shadow-lg transition-all duration-300 overflow-hidden group dark:border-primary-800/30 border-primary-200/80">
                 <div className="absolute top-0 left-0 w-1 h-0 bg-primary transition-all duration-500 group-hover:h-full"></div>
                 <CardHeader className="pb-2">
                   <div className="mb-4 transition-transform duration-500 transform group-hover:scale-110 group-hover:text-primary">
@@ -80,7 +80,10 @@ const ServicesSection = () => {
                   <p className="text-muted-foreground">{service.description}</p>
                 </CardContent>
                 <CardFooter>
-                  <Button variant="ghost" className="p-0 h-auto group-hover:text-primary">
+                  <Button 
+                    variant="ghost" 
+                    className="p-0 h-auto group-hover:text-primary transition-colors duration-300 hover:bg-transparent"
+                  >
                     {t("common.readMore")}
                   </Button>
                 </CardFooter>

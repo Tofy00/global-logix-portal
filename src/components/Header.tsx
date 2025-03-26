@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "@/components/ThemeProvider";
@@ -53,10 +52,8 @@ const Header = () => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       
-      // Check if scrolled to apply header background
       setIsScrolled(scrollPosition > 50);
       
-      // Check active section
       if (location.pathname === "/") {
         const sections = ["hero", "services", "about", "team", "contact"];
         
@@ -64,9 +61,9 @@ const Header = () => {
           const element = document.getElementById(section);
           if (element) {
             const rect = element.getBoundingClientRect();
+            const threshold = 100;
             
-            // If the element is in view
-            if (rect.top <= 100 && rect.bottom >= 100) {
+            if (rect.top <= threshold && rect.bottom >= threshold) {
               setActiveSection(section);
               break;
             }
@@ -85,7 +82,6 @@ const Header = () => {
     };
   }, [location.pathname]);
 
-  // Close mobile menu when clicking a link
   const handleNavLinkClick = () => {
     setIsMenuOpen(false);
   };
@@ -103,15 +99,14 @@ const Header = () => {
           </h1>
         </Link>
 
-        {/* Desktop navigation */}
         <nav className="hidden md:flex items-center space-x-1">
           {navItems.map((item) => (
             <Link
               key={item.id}
               to={item.path}
-              className={`px-3 py-2 text-sm rounded-md transition-colors ${
+              className={`px-3 py-2 text-sm rounded-md transition-all duration-300 relative ${
                 (item.path === location.pathname || (location.pathname === "/" && activeSection === item.section))
-                  ? "text-primary font-medium"
+                  ? "text-primary font-medium after:content-[''] after:absolute after:bottom-0 after:left-1/4 after:w-1/2 after:h-0.5 after:bg-primary after:rounded-full" 
                   : "text-foreground/80 hover:text-foreground hover:bg-accent"
               }`}
               onClick={handleNavLinkClick}
@@ -123,7 +118,7 @@ const Header = () => {
           <div className="ml-4 flex items-center space-x-2">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="icon" className="w-8 h-8">
+                <Button variant="outline" size="icon" className="w-8 h-8 transition-colors duration-300">
                   <Globe className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
@@ -132,7 +127,7 @@ const Header = () => {
                   <DropdownMenuItem
                     key={code}
                     onClick={() => setLanguage(code as Language)}
-                    className={currentLanguage === code ? "bg-accent" : ""}
+                    className={currentLanguage === code ? "bg-accent font-medium" : ""}
                   >
                     <span className="mr-2">{languageFlags[code as Language]}</span>
                     {name}
@@ -144,23 +139,22 @@ const Header = () => {
             <Button 
               variant="outline" 
               size="icon" 
-              className="w-8 h-8"
+              className="w-8 h-8 transition-colors duration-300"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             >
               {theme === "dark" ? (
-                <Sun className="h-4 w-4" />
+                <Sun className="h-4 w-4 text-yellow-400" />
               ) : (
-                <Moon className="h-4 w-4" />
+                <Moon className="h-4 w-4 text-primary-800" />
               )}
             </Button>
           </div>
         </nav>
 
-        {/* Mobile menu button */}
         <div className="flex items-center md:hidden space-x-2">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="icon" className="w-8 h-8">
+              <Button variant="outline" size="icon" className="w-8 h-8 transition-colors duration-300">
                 <Globe className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
@@ -169,7 +163,7 @@ const Header = () => {
                 <DropdownMenuItem
                   key={code}
                   onClick={() => setLanguage(code as Language)}
-                  className={currentLanguage === code ? "bg-accent" : ""}
+                  className={currentLanguage === code ? "bg-accent font-medium" : ""}
                 >
                   <span className="mr-2">{languageFlags[code as Language]}</span>
                   {name}
@@ -181,13 +175,13 @@ const Header = () => {
           <Button 
             variant="outline" 
             size="icon" 
-            className="w-8 h-8"
+            className="w-8 h-8 transition-colors duration-300"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           >
             {theme === "dark" ? (
-              <Sun className="h-4 w-4" />
+              <Sun className="h-4 w-4 text-yellow-400" />
             ) : (
-              <Moon className="h-4 w-4" />
+              <Moon className="h-4 w-4 text-primary-800" />
             )}
           </Button>
 
@@ -195,6 +189,7 @@ const Header = () => {
             variant="ghost" 
             size="icon" 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="transition-transform duration-300"
           >
             {isMenuOpen ? (
               <X className="h-6 w-6" />
@@ -205,17 +200,16 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-lg shadow-lg">
+        <div className="md:hidden bg-background/95 backdrop-blur-lg shadow-lg animate-fade-in">
           <div className="container py-4 flex flex-col space-y-2">
             {navItems.map((item) => (
               <Link
                 key={item.id}
                 to={item.path}
-                className={`px-4 py-3 rounded-md transition-colors ${
+                className={`px-4 py-3 rounded-md transition-all duration-300 ${
                   (item.path === location.pathname || (location.pathname === "/" && activeSection === item.section))
-                    ? "bg-primary/10 text-primary font-medium"
+                    ? "bg-primary/10 text-primary font-medium border-l-2 border-primary pl-3"
                     : "text-foreground/80 hover:text-foreground hover:bg-accent"
                 }`}
                 onClick={handleNavLinkClick}

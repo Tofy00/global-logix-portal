@@ -27,20 +27,20 @@ const HeroSection = () => {
           backgroundAttachment: "fixed",
         }}
       >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-950/90 to-primary-900/70"></div>
+        {/* Overlay - reduced blur, increased darkness for better text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-950/90 via-primary-900/80 to-primary-900/70 dark:from-primary-950/95 dark:to-primary-900/85"></div>
       </div>
 
       <div className="container relative z-10 mx-auto px-4 py-32 text-white">
         <div className="max-w-3xl">
           <ScrollReveal>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-md">
               {t("home.hero.title")}
             </h1>
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
-            <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl">
+            <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl drop-shadow-sm">
               {t("home.hero.subtitle")}
             </p>
           </ScrollReveal>
@@ -49,7 +49,7 @@ const HeroSection = () => {
             <Button
               size="lg"
               onClick={scrollToServices}
-              className="text-base bg-secondary hover:bg-secondary/90 group"
+              className="text-base bg-secondary hover:bg-secondary/90 text-white dark:text-white shadow-lg transition-all duration-300 group"
             >
               {t("home.hero.cta")}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -58,13 +58,13 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - improved animation */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
         <div
-          className="w-8 h-12 border-2 border-white/30 rounded-full flex justify-center p-1 cursor-pointer animate-bounce"
+          className="w-8 h-12 border-2 border-white/50 dark:border-white/50 rounded-full flex justify-center p-1 cursor-pointer animate-bounce hover:border-white/80 transition-colors"
           onClick={scrollToServices}
         >
-          <div className="w-1 h-3 bg-white/60 rounded-full mt-1"></div>
+          <div className="w-1 h-3 bg-white/80 rounded-full mt-1"></div>
         </div>
       </div>
     </section>

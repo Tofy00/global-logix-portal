@@ -60,9 +60,9 @@ const TeamSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {team.map((member, idx) => (
             <ScrollReveal key={member.id} delay={300 + idx * 100}>
-              <Card className="text-center overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full">
+              <Card className="text-center overflow-hidden hover:shadow-lg transition-all duration-300 h-full transform hover:-translate-y-1 dark:border-primary-800/30 border-primary-200/80">
                 <CardContent className="pt-6 pb-4 px-4 flex flex-col items-center">
-                  <Avatar className="h-32 w-32 mb-4 border-4 border-background shadow-md">
+                  <Avatar className="h-32 w-32 mb-4 border-4 border-background shadow-md hover:scale-105 transition-transform duration-300">
                     {member.image ? (
                       <AvatarImage src={member.image} alt={member.name} />
                     ) : (

@@ -79,8 +79,30 @@
     @apply border-border;
   }
   
+  html {
+    @apply scroll-smooth;
+  }
+  
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Smooth transitions for all theme-related colors */
+  .card, 
+  .button, 
+  .input, 
+  .dropdown, 
+  .avatar, 
+  .icon,
+  section,
+  header,
+  footer,
+  nav {
+    transition: background-color 0.3s ease, 
+                color 0.3s ease, 
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -122,7 +144,7 @@
   }
   
   .btn {
-    @apply inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
   }
   
   .btn-primary {
@@ -157,7 +179,34 @@
     @apply animate-fade-in-right;
   }
   
+  /* Enhanced animations and hover effects */
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1;
+  }
+  
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+  
+  .hover-shadow {
+    @apply transition-shadow duration-300 hover:shadow-lg;
+  }
+  
+  .active-link {
+    @apply relative after:content-[''] after:absolute after:bottom-0 after:left-1/4 after:w-1/2 after:h-0.5 after:bg-primary after:rounded-full;
+  }
+  
   .parallax-bg {
     @apply bg-fixed bg-center bg-cover;
+  }
+  
+  /* Enhanced keyframe animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
 }
