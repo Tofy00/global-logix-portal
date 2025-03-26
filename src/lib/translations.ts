@@ -209,52 +209,60 @@ export const translations = {
       services: {
         title: "What Makes Us Different",
         subtitle: "We provide a full range of logistics services",
-        efficientLogistics: {
-          title: "Efficient Logistics",
-          description: "Optimized routes and modern technologies for fast delivery of your cargo"
+        originalComponents: {
+          title: "Original Components Only",
+          description: "Direct supplies from verified manufacturers, without intermediaries."
         },
-        qualityControl: {
-          title: "Quality Control",
-          description: "Thorough control at all stages, guaranteeing the integrity and quality of components"
+        technicalSupport: {
+          title: "Expert Technical Support",
+          description: "Assistance from manufacturer engineers, quick consultations."
         },
-        customClearance: {
-          title: "Customs Clearance",
-          description: "Professional support at all stages of customs clearance"
+        flexiblePricing: {
+          title: "Transparent and Flexible Pricing",
+          description: "Optimal logistics routes, flexible terms, especially for orders from China."
         },
-        doorToDoor: {
-          title: "Door-to-Door Delivery",
-          description: "Comprehensive solution for logistics tasks from manufacturer to your warehouse"
+        customApproach: {
+          title: "Approach for the Russian Market",
+          description: "Personalized supply schemes, adaptation to the client."
+        },
+        experience: {
+          title: "15 Years of Experience and Trust",
+          description: "Dozens of successful cases, constant partnerships with Russian manufacturers."
+        },
+        fastDelivery: {
+          title: "Fast Delivery",
+          description: "Logistics through Turkey and China allows us to respond quickly."
         }
       },
       team: {
         title: "Our Team",
         subtitle: "Professionals with years of experience in international logistics",
         member1: {
-          name: "Alexander Petrov",
+          name: "Rabyshkov Andrey",
           position: "CEO",
-          bio: "Over 15 years of experience in international logistics and supply chain management"
+          bio: "Over 10 years of experience in international logistics and supply management."
         },
         member2: {
-          name: "Elena Sokolova",
-          position: "Head of Logistics",
-          bio: "Expert in logistics process optimization and international deliveries"
+          name: "Metelsky Alexey",
+          position: "Sales Director",
+          bio: "Expert in business development and key client relations."
         },
         member3: {
-          name: "Mikhail Ivanov",
-          position: "Head of Foreign Economic Activity",
-          bio: "Specialist in customs clearance and international trade relations"
-        },
-        member4: {
-          name: "Olga Smirnova",
-          position: "Head of Sales",
-          bio: "Professional in customer service and business development"
+          name: "Zbarazhskaya Svetlana",
+          position: "Key Account Manager",
+          bio: "Specialist in customer service and corporate client servicing."
         }
       },
       about: {
-        title: "About the Company",
-        subtitle: "Your reliable partner in international logistics",
-        description: "GlobalLogix is a team of professionals with many years of experience in international transportation and logistics. We specialize in the supply of original electronic components from China and Turkey to Russia, providing a full range of services: from procurement and quality control to customs clearance and door-to-door delivery.",
-        years: "10+ years",
+        title: "Your Component Supplier from Abroad",
+        subtitle: "We are a reliable partner for Russian companies that need quality electronic components without delays and extra costs.",
+        offices: "Offices in China and Turkey",
+        officesText: "We are closer to production and respond faster to your tasks.",
+        components: "Range of Components",
+        componentsText: "Products only from reliable global brands.",
+        approach: "Comprehensive Approach",
+        approachText: "From selection and approval to delivery and support.",
+        years: "15+ years",
         yearsText: "in the logistics market",
         countries: "20+ countries",
         countriesText: "in the supply network",
@@ -266,18 +274,30 @@ export const translations = {
       contact: {
         title: "Contact Us",
         subtitle: "We are ready to answer your questions",
-        addressTitle: "Address",
-        address: "123 Lenin St, Moscow, Russia, 123456",
-        phoneTitle: "Phone",
-        phone: "+7 (495) 123-4567",
+        moscow: "Moscow Office",
+        moscowAddress: "Vernadsky Ave, 41, bldg. 1 (Moscow Regional Consumer Union)",
+        china: "China",
+        chinaAddress: "123 Electronics Avenue, Shanghai, China, 200000",
+        turkey: "Turkey",
+        turkeyAddress: "456 Component Street, Istanbul, Turkey, 34000",
         emailTitle: "Email",
-        email: "info@globallogix.ru",
+        email: "hello@witpower.ru",
+        phoneTitle: "Phone",
+        phone: "+86 21 1234 5678",
+        workHours: "Working Hours",
+        workHoursText: "Mon–Fri, 10:00–19:00",
         formTitle: "Send a Message",
         namePlaceholder: "Your name",
         emailPlaceholder: "Your email",
-        phonePlaceholder: "Your phone",
+        subjectPlaceholder: "Subject",
         messagePlaceholder: "Your message",
-        submitButton: "Submit"
+        submitButton: "Send Message",
+        telegramTitle: "Write on Telegram",
+        fullNamePlaceholder: "Full name",
+        telegramPlaceholder: "Your Telegram username",
+        telegramSubjectPlaceholder: "Subject",
+        telegramMessagePlaceholder: "Your message",
+        telegramButton: "Send"
       }
     },
     catalog: {
@@ -362,52 +382,60 @@ export const translations = {
       services: {
         title: "我们的独特之处",
         subtitle: "我们提供全方位的物流服务",
-        efficientLogistics: {
-          title: "高效物流",
-          description: "优化路线和现代技术，快速交付您的货物"
+        originalComponents: {
+          title: "只提供原装零部件",
+          description: "直接从经过验证的制造商处供应，没有中间商"
         },
-        qualityControl: {
-          title: "质量控制",
-          description: "在所有阶段进行全面控制，保证零部件的完整性和质量"
+        technicalSupport: {
+          title: "专业技术支持",
+          description: "制造商工程师的协助，快速咨询"
         },
-        customClearance: {
-          title: "清关服务",
-          description: "清关所有阶段的专业支持"
+        flexiblePricing: {
+          title: "透明灵活的价格",
+          description: "最佳物流路线，灵活条款，尤其是来自中国的订单"
         },
-        doorToDoor: {
-          title: "门到门服务",
-          description: "从制造商到您的仓库的物流任务的综合解决方案"
+        customApproach: {
+          title: "针对俄罗斯市场的方法",
+          description: "个性化供应方案，适应客户需求"
+        },
+        experience: {
+          title: "15年经验和信任",
+          description: "数十个成功案例，与俄罗斯制造商的持续合作"
+        },
+        fastDelivery: {
+          title: "快速交付",
+          description: "通过土耳其和中国的物流使我们能够快速响应"
         }
       },
       team: {
         title: "我们的团队",
         subtitle: "在国际物流领域拥有多年经验的专业人士",
         member1: {
-          name: "亚历山大·彼得罗夫",
+          name: "拉贝什科夫·安德烈",
           position: "首席执行官",
-          bio: "在国际物流和供应链管理方面拥有超过15年的经验"
+          bio: "在国际物流和供应管理方面拥有超过10年的经验"
         },
         member2: {
-          name: "叶连娜·索科洛娃",
-          position: "物流主管",
-          bio: "物流流程优化和国际运输专家"
+          name: "梅捷尔斯基·阿列克谢",
+          position: "销售总监",
+          bio: "业务发展和关键客户关系专家"
         },
         member3: {
-          name: "米哈伊尔·伊万诺夫",
-          position: "对外经济活动负责人",
-          bio: "清关和国际贸易关系专家"
-        },
-        member4: {
-          name: "奥尔加·斯米尔诺娃",
-          position: "销售主管",
-          bio: "客户服务和业务发展专业人士"
+          name: "兹巴拉日斯卡亚·斯韦特兰娜",
+          position: "关键客户经理",
+          bio: "客户服务和企业客户服务专家"
         }
       },
       about: {
-        title: "关于公司",
-        subtitle: "您在国际物流领域的可靠合作伙伴",
-        description: "GlobalLogix是一支在国际运输和物流领域拥有多年经验的专业团队。我们专注于从中国和土耳其向俄罗斯供应原装电子元件，提供全方位服务：从采购和质量控制到清关和送货上门。",
-        years: "10多年",
+        title: "您的海外零部件供应商",
+        subtitle: "我们是俄罗斯公司的可靠合作伙伴，为需要无延迟和额外成本获得优质电子零部件的公司提供服务",
+        offices: "中国和土耳其办事处",
+        officesText: "我们更接近生产，更快地响应您的任务",
+        components: "零部件范围",
+        componentsText: "仅来自可靠的全球品牌的产品",
+        approach: "综合方法",
+        approachText: "从选择和批准到交付和支持",
+        years: "15多年",
         yearsText: "物流市场经验",
         countries: "20多个国家",
         countriesText: "供应网络",
@@ -419,18 +447,30 @@ export const translations = {
       contact: {
         title: "联系我们",
         subtitle: "我们准备回答您的问题",
-        addressTitle: "地址",
-        address: "俄罗斯莫斯科列宁街123号，123456",
-        phoneTitle: "电话",
-        phone: "+7 (495) 123-4567",
+        moscow: "莫斯科办公室",
+        moscowAddress: "维尔纳茨基大道，41号，1号楼（莫斯科地区消费者联盟）",
+        china: "中国",
+        chinaAddress: "中国上海电子大道123号，200000",
+        turkey: "土耳其",
+        turkeyAddress: "土耳其伊斯坦布尔组件街456号，34000",
         emailTitle: "电子邮件",
-        email: "info@globallogix.ru",
+        email: "hello@witpower.ru",
+        phoneTitle: "电话",
+        phone: "+86 21 1234 5678",
+        workHours: "工作时间",
+        workHoursText: "周一至周五，10:00–19:00",
         formTitle: "发送消息",
         namePlaceholder: "您的姓名",
         emailPlaceholder: "您的电子邮件",
-        phonePlaceholder: "您的电话",
+        subjectPlaceholder: "主题",
         messagePlaceholder: "您的留言",
-        submitButton: "提交"
+        submitButton: "发送消息",
+        telegramTitle: "在Telegram上写信",
+        fullNamePlaceholder: "全名",
+        telegramPlaceholder: "您的Telegram用户名",
+        telegramSubjectPlaceholder: "主题",
+        telegramMessagePlaceholder: "您的留言",
+        telegramButton: "发送"
       }
     },
     catalog: {
@@ -515,52 +555,60 @@ export const translations = {
       services: {
         title: "Bizi Farklı Kılan Nedir",
         subtitle: "Tam kapsamlı lojistik hizmetleri sunuyoruz",
-        efficientLogistics: {
-          title: "Verimli Lojistik",
-          description: "Kargonuzun hızlı teslimatı için optimize edilmiş rotalar ve modern teknolojiler"
+        originalComponents: {
+          title: "Sadece Orijinal Bileşenler",
+          description: "Doğrudan güvenilir üreticilerden tedarik, aracı olmadan."
         },
-        qualityControl: {
-          title: "Kalite Kontrol",
-          description: "Tüm aşamalarda kapsamlı kontrol, bileşenlerin bütünlüğünü ve kalitesini garanti eder"
+        technicalSupport: {
+          title: "Uzman Teknik Destek",
+          description: "Üretici mühendislerinden yardım, hızlı danışmanlık."
         },
-        customClearance: {
-          title: "Gümrük İşlemleri",
-          description: "Gümrük işlemlerinin tüm aşamalarında profesyonel destek"
+        flexiblePricing: {
+          title: "Şeffaf ve Esnek Fiyatlandırma",
+          description: "Optimal lojistik rotaları, esnek koşullar, özellikle Çin'den gelen siparişler için."
         },
-        doorToDoor: {
-          title: "Kapıdan Kapıya Teslimat",
-          description: "Üreticiden deponuza kadar lojistik görevler için kapsamlı çözüm"
+        customApproach: {
+          title: "Rus Pazarı için Yaklaşım",
+          description: "Kişiselleştirilmiş tedarik şemaları, müşteriye uyarlama."
+        },
+        experience: {
+          title: "15 Yıllık Deneyim ve Güven",
+          description: "Onlarca başarılı vaka, Rus üreticileriyle sürekli ortaklıklar."
+        },
+        fastDelivery: {
+          title: "Hızlı Teslimat",
+          description: "Türkiye ve Çin üzerinden lojistik bize hızlı yanıt verme imkanı sağlıyor."
         }
       },
       team: {
         title: "Ekibimiz",
         subtitle: "Uluslararası lojistikte yıllarca deneyime sahip profesyoneller",
         member1: {
-          name: "Alexander Petrov",
-          position: "CEO",
-          bio: "Uluslararası lojistik ve tedarik zinciri yönetiminde 15 yıldan fazla deneyim"
+          name: "Rabyshkov Andrey",
+          position: "Genel Müdür",
+          bio: "Uluslararası lojistik ve tedarik yönetiminde 10 yıldan fazla deneyim."
         },
         member2: {
-          name: "Elena Sokolova",
-          position: "Lojistik Müdürü",
-          bio: "Lojistik süreç optimizasyonu ve uluslararası teslimatlar konusunda uzman"
+          name: "Metelsky Alexey",
+          position: "Satış Direktörü",
+          bio: "İş geliştirme ve kilit müşteri ilişkileri uzmanı."
         },
         member3: {
-          name: "Mikhail Ivanov",
-          position: "Dış Ekonomik Faaliyet Başkanı",
-          bio: "Gümrük işlemleri ve uluslararası ticari ilişkiler uzmanı"
-        },
-        member4: {
-          name: "Olga Smirnova",
-          position: "Satış Müdürü",
-          bio: "Müşteri hizmetleri ve iş geliştirme profesyoneli"
+          name: "Zbarazhskaya Svetlana",
+          position: "Kilit Müşteri Yöneticisi",
+          bio: "Müşteri hizmetleri ve kurumsal müşteri hizmetleri uzmanı."
         }
       },
       about: {
-        title: "Şirket Hakkında",
-        subtitle: "Uluslararası lojistikte güvenilir ortağınız",
-        description: "GlobalLogix, uluslararası taşımacılık ve lojistik alanında uzun yıllara dayanan deneyime sahip profesyonellerden oluşan bir ekiptir. Çin ve Türkiye'den Rusya'ya orijinal elektronik bileşenlerin tedarikinde uzmanlaşmış olup, tedarikten kalite kontrolüne, gümrük işlemlerinden kapıdan kapıya teslimata kadar tam kapsamlı hizmetler sunuyoruz.",
-        years: "10+ yıl",
+        title: "Yurtdışından Bileşen Tedarikçiniz",
+        subtitle: "Gecikmeler ve ekstra maliyetler olmadan kaliteli elektronik bileşenlere ihtiyaç duyan Rus şirketleri için güvenilir bir ortağız.",
+        offices: "Çin ve Türkiye'de Ofisler",
+        officesText: "Üretime daha yakınız ve görevlerinize daha hızlı yanıt veriyoruz.",
+        components: "Bileşen Yelpazesi",
+        componentsText: "Sadece güvenilir global markalardan ürünler.",
+        approach: "Kapsamlı Yaklaşım",
+        approachText: "Seçim ve onaydan teslimat ve desteğe kadar.",
+        years: "15+ yıl",
         yearsText: "lojistik pazarında",
         countries: "20+ ülke",
         countriesText: "tedarik ağında",
@@ -572,18 +620,30 @@ export const translations = {
       contact: {
         title: "Bize Ulaşın",
         subtitle: "Sorularınızı yanıtlamaya hazırız",
-        addressTitle: "Adres",
-        address: "Lenin Caddesi 123, Moskova, Rusya, 123456",
-        phoneTitle: "Telefon",
-        phone: "+7 (495) 123-4567",
+        moscow: "Moskova Ofisi",
+        moscowAddress: "Vernadsky Cad., 41, Bina 1 (Moskova Bölgesel Tüketici Birliği)",
+        china: "Çin",
+        chinaAddress: "123 Electronics Avenue, Şangay, Çin, 200000",
+        turkey: "Türkiye",
+        turkeyAddress: "456 Component Street, İstanbul, Türkiye, 34000",
         emailTitle: "E-posta",
-        email: "info@globallogix.ru",
+        email: "hello@witpower.ru",
+        phoneTitle: "Telefon",
+        phone: "+86 21 1234 5678",
+        workHours: "Çalışma Saatleri",
+        workHoursText: "Pt–Cu, 10:00–19:00",
         formTitle: "Mesaj Gönder",
         namePlaceholder: "Adınız",
         emailPlaceholder: "E-posta adresiniz",
-        phonePlaceholder: "Telefonunuz",
+        subjectPlaceholder: "Konu",
         messagePlaceholder: "Mesajınız",
-        submitButton: "Gönder"
+        submitButton: "Mesajı Gönder",
+        telegramTitle: "Telegram'da Yazın",
+        fullNamePlaceholder: "Tam adınız",
+        telegramPlaceholder: "Telegram kullanıcı adınız",
+        telegramSubjectPlaceholder: "Konu",
+        telegramMessagePlaceholder: "Mesajınız",
+        telegramButton: "Gönder"
       }
     },
     catalog: {

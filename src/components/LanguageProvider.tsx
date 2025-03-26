@@ -48,10 +48,31 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
     const keys = key.split(".");
     let current: any = translations[currentLanguage];
     
+    // Try to get translation from current language
     for (const k of keys) {
       if (current && current[k]) {
         current = current[k];
       } else {
+        // If key not found in current language, try to find it in default language
+        if (currentLanguage !== defaultLanguage) {
+          let fallback: any = translations[defaultLanguage];
+          let fallbackFound = true;
+          
+          for (const fk of keys) {
+            if (fallback && fallback[fk]) {
+              fallback = fallback[fk];
+            } else {
+              fallbackFound = false;
+              break;
+            }
+          }
+          
+          if (fallbackFound) {
+            console.info(`Translation key not found in ${currentLanguage}, using fallback from ${defaultLanguage}: ${key}`);
+            return fallback;
+          }
+        }
+        
         console.warn(`Translation key not found: ${key} for language ${currentLanguage}`);
         return key;
       }
