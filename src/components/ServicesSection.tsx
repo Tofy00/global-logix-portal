@@ -2,7 +2,7 @@
 import { useLanguage } from "@/components/LanguageProvider";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ShieldCheck, HeadsetHelp, BarChart3, Users, Award, Clock } from "lucide-react";
+import { ShieldCheck, Headphones, BarChart3, Users, Award, Clock } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const ServicesSection = () => {
@@ -17,7 +17,7 @@ const ServicesSection = () => {
     },
     {
       id: "technicalSupport",
-      icon: <HeadsetHelp className="h-8 w-8 text-primary" />,
+      icon: <Headphones className="h-8 w-8 text-primary" />,
       title: t("home.services.technicalSupport.title"),
       description: t("home.services.technicalSupport.description"),
     },
