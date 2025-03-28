@@ -29,7 +29,7 @@ const TeamSection = () => {
       name: t("home.team.member3.name"),
       position: t("home.team.member3.position"),
       bio: t("home.team.member3.bio"),
-      image: "/lovable-uploads/7ac53bcf-b75e-4d74-98cf-61f84e481a9f.png",
+      image: "/lovable-uploads/39f903a0-bd34-4b14-ad6b-250f6651b261.png",
       initials: "ЗС",
     },
   ];
