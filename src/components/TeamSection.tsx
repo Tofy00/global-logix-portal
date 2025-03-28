@@ -13,7 +13,7 @@ const TeamSection = () => {
       name: t("home.team.member1.name"),
       position: t("home.team.member1.position"),
       bio: t("home.team.member1.bio"),
-      image: "/lovable-uploads/9a3c095f-2baf-440a-8d3b-3930fb0b9e71.png",
+      image: "/lovable-uploads/eecebb31-362a-4b14-8ecd-e5e70f88f8da.png",
       initials: "РА",
     },
     {
@@ -21,7 +21,7 @@ const TeamSection = () => {
       name: t("home.team.member2.name"),
       position: t("home.team.member2.position"),
       bio: t("home.team.member2.bio"),
-      image: "/lovable-uploads/82f74807-4603-4c4d-9d7c-056aa83e5b66.png", 
+      image: "/lovable-uploads/26634ba0-f35d-4b9b-9777-5bb18b7a1f23.png", 
       initials: "МА",
     },
     {
@@ -29,7 +29,7 @@ const TeamSection = () => {
       name: t("home.team.member3.name"),
       position: t("home.team.member3.position"),
       bio: t("home.team.member3.bio"),
-      image: "/lovable-uploads/959db16e-40ee-4c02-a5be-688227dd2124.png",
+      image: "/lovable-uploads/7ac53bcf-b75e-4d74-98cf-61f84e481a9f.png",
       initials: "ЗС",
     },
   ];
