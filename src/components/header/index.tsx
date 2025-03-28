@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "@/components/LanguageProvider";
@@ -24,10 +23,23 @@ const Header = () => {
   ];
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+    
+    const hash = location.hash.replace('#', '');
+    if (hash && location.pathname === '/') {
+      const element = document.getElementById(hash);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [location.pathname]);
+
+  useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       
-      // Set scroll state for background opacity
       setIsScrolled(scrollPosition > 50);
       setLastScrollY(scrollPosition);
       
@@ -59,7 +71,7 @@ const Header = () => {
     };
   }, [location.pathname, lastScrollY]);
 
-  const handleNavLinkClick = (section: string) => {
+  const handleNavLinkClick = (section: string, path: string) => {
     setIsMenuOpen(false);
     
     if (location.pathname === "/" && section) {
@@ -93,7 +105,7 @@ const Header = () => {
               label={item.label}
               path={item.path}
               isActive={item.path === location.pathname || (location.pathname === "/" && activeSection === item.section)}
-              onClick={() => handleNavLinkClick(item.section)}
+              onClick={() => handleNavLinkClick(item.section, item.path)}
             />
           ))}
 
