@@ -62,15 +62,20 @@ const TeamSection = () => {
             <ScrollReveal key={member.id} delay={300 + idx * 100}>
               <Card className="text-center overflow-hidden hover:shadow-lg transition-all duration-300 h-full transform hover:-translate-y-1 dark:border-primary-800/30 border-primary-200/80">
                 <CardContent className="pt-6 pb-4 px-4 flex flex-col items-center">
-                  <Avatar className="h-32 w-32 mb-4 border-4 border-background shadow-md hover:scale-105 transition-transform duration-300">
+                  <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-background shadow-md hover:scale-105 transition-transform duration-300 mb-4">
+                    <div className="w-full h-full bg-gradient-to-br absolute inset-0 opacity-10" />
                     {member.image ? (
-                      <AvatarImage src={member.image} alt={member.name} />
+                      <img 
+                        src={member.image} 
+                        alt={member.name}
+                        className="w-full h-full object-cover object-center"
+                      />
                     ) : (
-                      <AvatarFallback className={`text-xl font-medium bg-gradient-to-br ${gradients[idx % gradients.length]} text-white`}>
+                      <div className={`flex items-center justify-center w-full h-full bg-gradient-to-br ${gradients[idx % gradients.length]} text-white text-2xl font-medium`}>
                         {member.initials}
-                      </AvatarFallback>
+                      </div>
                     )}
-                  </Avatar>
+                  </div>
                   <CardTitle className="mt-4 mb-1 font-medium text-foreground text-xl">
                     {member.name}
                   </CardTitle>
