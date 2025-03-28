@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
@@ -37,9 +38,6 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 221.2 83.2% 53.3%;
     --radius: 0.5rem;
-    
-    --blue-glow: 0 0 30px rgba(0, 122, 255, 0.5);
-    --blue-glow-dark: 0 0 30px rgba(59, 130, 246, 0.5);
   }
 
   .dark {
@@ -73,9 +71,6 @@
     --border: 217 33% 17.5%;
     --input: 217 33% 17.5%;
     --ring: 224.3 76.3% 48%;
-    
-    --blue-glow: 0 0 30px rgba(59, 130, 246, 0.5);
-    --blue-glow-dark: 0 0 30px rgba(96, 165, 250, 0.5);
   }
 }
 
@@ -93,6 +88,7 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
   
+  /* Smooth transitions for all theme-related colors */
   .card, 
   .button, 
   .input, 
@@ -183,16 +179,16 @@
     @apply animate-fade-in-right;
   }
   
-  .hover-lift {
-    @apply transition-transform duration-300 hover:-translate-y-1;
+  .card-glow {
+    @apply transition-all duration-300;
   }
   
-  .hover-scale {
-    @apply transition-transform duration-300 hover:scale-105;
+  .card-glow:hover {
+    box-shadow: 0 0 30px rgba(0, 122, 255, 0.6);
   }
   
-  .hover-shadow {
-    @apply transition-shadow duration-300 hover:shadow-lg;
+  .dark .card-glow:hover {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
   }
   
   .active-link {
