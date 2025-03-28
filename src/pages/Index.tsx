@@ -28,8 +28,18 @@ const Index = () => {
           }, 100);
         }
       }
+      
+      // If we have a scrollToId from state (used when navigating from footer links)
+      if (location.state && location.state.scrollToId) {
+        const targetElement = document.getElementById(location.state.scrollToId);
+        if (targetElement) {
+          setTimeout(() => {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }
+      }
     }
-  }, [location.hash]);
+  }, [location.hash, location.state]);
 
   return (
     <main className="flex flex-col">

@@ -1,5 +1,5 @@
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLanguage } from "@/components/LanguageProvider";
 import { Separator } from "@/components/ui/separator";
 import { Mail, Phone, MapPin } from "lucide-react";
@@ -7,6 +7,29 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 const Footer = () => {
   const { t } = useLanguage();
+  const location = useLocation();
+  const navigate = useNavigate();
+  
+  const handleNavigation = (path: string) => {
+    if (path.startsWith('/#')) {
+      // Handle anchors on the home page
+      const anchor = path.replace('/#', '');
+      
+      if (location.pathname !== '/') {
+        // If not on home page, navigate to home page first with the anchor
+        navigate('/', { state: { scrollToId: anchor } });
+      } else {
+        // If already on home page, just scroll to the section
+        const element = document.getElementById(anchor);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    } else {
+      // Regular navigation to other pages
+      navigate(path);
+    }
+  };
   
   const socialLinks = [
     {
@@ -72,12 +95,14 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Company Info & Social */}
             <div className="flex flex-col space-y-6">
-              <Link 
-                to="/" 
+              <button 
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
                 className="text-xl font-bold text-foreground hover:text-primary transition-colors duration-300 transform hover:scale-105 w-fit"
               >
                 GlobalLogix
-              </Link>
+              </button>
               
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
@@ -100,13 +125,14 @@ const Footer = () => {
               <h3 className="text-lg font-semibold mb-2">{t("footer.company")}</h3>
               <nav className="flex flex-col space-y-2">
                 {navigationLinks.map((link, index) => (
-                  <Link 
+                  <button 
                     key={index} 
-                    to={link.path}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-300 transform hover:translate-x-1 w-fit"
+                    onClick={() => handleNavigation(link.path)}
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300 w-fit group relative"
                   >
-                    {link.name}
-                  </Link>
+                    <span>{link.name}</span>
+                    <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-primary rounded-full transition-all duration-300 group-hover:w-full"></span>
+                  </button>
                 ))}
               </nav>
             </div>
