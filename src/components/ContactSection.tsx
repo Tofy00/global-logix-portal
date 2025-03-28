@@ -8,6 +8,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useToast } from "@/hooks/use-toast";
 import { MapPin, Mail, Phone, Clock, Send } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
+// Define recipient types for better type safety
+type Recipient = {
+  id: string;
+  label: string;
+  email?: string;
+  telegram?: string;
+};
 
 const ContactSection = () => {
   const { t } = useLanguage();
@@ -18,18 +27,43 @@ const ContactSection = () => {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const [recipient, setRecipient] = useState<string>("general");
   
   // Telegram form state
   const [fullName, setFullName] = useState("");
   const [telegram, setTelegram] = useState("");
   const [telegramSubject, setTelegramSubject] = useState("");
   const [telegramMessage, setTelegramMessage] = useState("");
+  const [telegramRecipient, setTelegramRecipient] = useState<string>("general");
   
+  // Define available recipients
+  const recipients: Recipient[] = [
+    { id: "general", label: t("home.contact.recipientGeneral"), email: "info@globallogix.com" },
+    { id: "sales", label: t("home.contact.recipientSales"), email: "sales@globallogix.com" },
+    { id: "support", label: t("home.contact.recipientSupport"), email: "support@globallogix.com" },
+  ];
+  
+  const telegramRecipients: Recipient[] = [
+    { id: "general", label: t("home.contact.recipientGeneral"), telegram: "@globallogix" },
+    { id: "sales", label: t("home.contact.recipientSales"), telegram: "@globallogix_sales" },
+    { id: "support", label: t("home.contact.recipientSupport"), telegram: "@globallogix_support" },
+  ];
+
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // In a real app, here you would send this to your backend
-    console.log("Contact form submitted:", { name, email, subject, message });
+    // Get the selected recipient
+    const selectedRecipient = recipients.find(r => r.id === recipient);
+    
+    // In a real app, here you would send this to your backend with the selected recipient
+    console.log("Contact form submitted:", { 
+      name, 
+      email, 
+      subject, 
+      message, 
+      recipientId: recipient,
+      recipientEmail: selectedRecipient?.email 
+    });
     
     toast({
       title: t("common.success"),
@@ -42,13 +76,24 @@ const ContactSection = () => {
     setEmail("");
     setSubject("");
     setMessage("");
+    setRecipient("general");
   };
   
   const handleTelegramSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // In a real app, here you would send this to your backend
-    console.log("Telegram form submitted:", { fullName, telegram, telegramSubject, telegramMessage });
+    // Get the selected recipient
+    const selectedRecipient = telegramRecipients.find(r => r.id === telegramRecipient);
+    
+    // In a real app, here you would send this to your backend with the selected recipient
+    console.log("Telegram form submitted:", { 
+      fullName, 
+      telegram, 
+      telegramSubject, 
+      telegramMessage,
+      recipientId: telegramRecipient,
+      recipientTelegram: selectedRecipient?.telegram 
+    });
     
     toast({
       title: t("common.success"),
@@ -61,6 +106,7 @@ const ContactSection = () => {
     setTelegram("");
     setTelegramSubject("");
     setTelegramMessage("");
+    setTelegramRecipient("general");
   };
 
   const contactInfo = [
@@ -171,6 +217,26 @@ const ContactSection = () => {
                       required
                     />
                   </div>
+                  <div>
+                    <label className="text-sm font-medium mb-1 block">
+                      {t("home.contact.recipientLabel")}
+                    </label>
+                    <Select 
+                      value={recipient} 
+                      onValueChange={setRecipient}
+                    >
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder={t("home.contact.selectRecipient")} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {recipients.map((r) => (
+                          <SelectItem key={r.id} value={r.id}>
+                            {r.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
                   <Button type="submit" className="w-full">
                     {t("home.contact.submitButton")}
                     <Send className="ml-2 h-4 w-4" />
@@ -232,6 +298,26 @@ const ContactSection = () => {
                       required
                       className="bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50"
                     />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium mb-1 block text-primary-foreground">
+                      {t("home.contact.recipientLabel")}
+                    </label>
+                    <Select 
+                      value={telegramRecipient} 
+                      onValueChange={setTelegramRecipient}
+                    >
+                      <SelectTrigger className="w-full bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground">
+                        <SelectValue placeholder={t("home.contact.selectRecipient")} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {telegramRecipients.map((r) => (
+                          <SelectItem key={r.id} value={r.id}>
+                            {r.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                   </div>
                   <Button 
                     type="submit" 
