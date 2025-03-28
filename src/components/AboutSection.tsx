@@ -68,7 +68,7 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {features.map((feature, index) => (
             <ScrollReveal key={index} delay={200 + index * 100}>
-              <Card className="h-full hover:shadow-md transition-shadow">
+              <Card className="h-full transition-all duration-500 ease-in-out hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(0,122,255,0.5)] dark:hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]">
                 <CardContent className="pt-6">
                   <div className="flex flex-col items-center text-center">
                     <div className="mb-4 p-3 rounded-full bg-primary/10">
@@ -87,7 +87,7 @@ const AboutSection = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
           {stats.map((stat, index) => (
             <ScrollReveal key={index} delay={stat.delay}>
-              <div className="bg-background rounded-lg p-6 text-center shadow-sm">
+              <div className="bg-background rounded-lg p-6 text-center shadow-sm transition-all duration-500 ease-in-out hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(0,122,255,0.5)] dark:hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]">
                 <div className="text-2xl md:text-3xl font-bold text-primary mb-1">
                   {stat.value}
                 </div>
