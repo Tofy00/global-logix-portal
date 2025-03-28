@@ -179,16 +179,17 @@
     @apply animate-fade-in-right;
   }
   
-  .card-glow {
-    @apply transition-all duration-300;
+  /* Enhanced animations and hover effects */
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1;
   }
   
-  .card-glow:hover {
-    box-shadow: 0 0 30px rgba(0, 122, 255, 0.6);
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-105;
   }
   
-  .dark .card-glow:hover {
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+  .hover-shadow {
+    @apply transition-shadow duration-300 hover:shadow-lg;
   }
   
   .active-link {
@@ -199,6 +200,7 @@
     @apply bg-fixed bg-center bg-cover;
   }
   
+  /* Enhanced keyframe animations */
   @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }

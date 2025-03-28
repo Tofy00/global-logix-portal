@@ -68,10 +68,10 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {features.map((feature, index) => (
             <ScrollReveal key={index} delay={200 + index * 100}>
-              <Card className="h-full hover:shadow-md transition-all duration-300 hover:scale-[1.03] hover:shadow-primary/60 dark:hover:shadow-primary/40 group card-glow">
+              <Card className="h-full hover:shadow-md transition-shadow">
                 <CardContent className="pt-6">
                   <div className="flex flex-col items-center text-center">
-                    <div className="mb-4 p-3 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
+                    <div className="mb-4 p-3 rounded-full bg-primary/10">
                       {feature.icon}
                     </div>
                     <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
@@ -87,7 +87,7 @@ const AboutSection = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
           {stats.map((stat, index) => (
             <ScrollReveal key={index} delay={stat.delay}>
-              <div className="bg-background rounded-lg p-6 text-center shadow-sm hover:shadow-primary/60 dark:hover:shadow-primary/40 hover:scale-[1.03] transition-all duration-300 card-glow">
+              <div className="bg-background rounded-lg p-6 text-center shadow-sm">
                 <div className="text-2xl md:text-3xl font-bold text-primary mb-1">
                   {stat.value}
                 </div>
