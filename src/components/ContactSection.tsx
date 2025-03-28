@@ -41,18 +41,24 @@ const ContactSection = () => {
   const contactInfo = [
     {
       icon: <MapPin className="h-5 w-5 text-primary" />,
-      title: "Офис в Москве",
-      content: "просп. Вернадского, 41, стр. 1 (Московский облпотребсоюз)",
+      title: "Адрес офиса",
+      content: "просп. Вернадского, 41, стр. 1, Москва, Россия",
+      link: "https://maps.google.com/?q=просп.+Вернадского,+41,+стр.+1,+Москва,+Россия",
+      isExternal: true
     },
     {
       icon: <Mail className="h-5 w-5 text-primary" />,
       title: "Эл. почта",
       content: "hello@witpower.ru",
+      link: "mailto:hello@witpower.ru",
+      isExternal: false
     },
     {
       icon: <Clock className="h-5 w-5 text-primary" />,
       title: "Время работы",
       content: "Пн–Пт, 10:00–19:00",
+      link: "",
+      isExternal: false
     },
   ];
 
@@ -77,16 +83,28 @@ const ContactSection = () => {
           <ScrollReveal>
             <div className="space-y-8">
               {contactInfo.map((item, index) => (
-                <Card key={index} className="overflow-hidden">
+                <Card key={index} className="overflow-hidden transform transition-all duration-300 hover:shadow-lg dark:hover:shadow-primary/10 hover:-translate-y-1">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
-                      <div className="p-2 bg-primary/10 rounded-full">
+                      <div className="p-2 bg-primary/10 rounded-full transform transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110">
                         {item.icon}
                       </div>
-                      <div>
-                        <h4 className="font-medium text-lg text-foreground mb-1">{item.title}</h4>
-                        <p className="text-muted-foreground">{item.content}</p>
-                      </div>
+                      {item.link ? (
+                        <a 
+                          href={item.link}
+                          target={item.isExternal ? "_blank" : undefined}
+                          rel={item.isExternal ? "noopener noreferrer" : undefined}
+                          className="group transition-colors duration-300 hover:text-primary"
+                        >
+                          <h4 className="font-medium text-lg text-foreground mb-1 group-hover:text-primary transition-colors duration-300">{item.title}</h4>
+                          <p className="text-muted-foreground group-hover:text-primary/80 transition-colors duration-300">{item.content}</p>
+                        </a>
+                      ) : (
+                        <div>
+                          <h4 className="font-medium text-lg text-foreground mb-1">{item.title}</h4>
+                          <p className="text-muted-foreground">{item.content}</p>
+                        </div>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
@@ -96,53 +114,56 @@ const ContactSection = () => {
 
           {/* Contact Form */}
           <ScrollReveal delay={200}>
-            <Card className="h-full">
+            <Card className="h-full transform transition-all duration-300 hover:shadow-lg dark:hover:shadow-primary/10">
               <CardContent className="p-6">
                 <h3 className="text-2xl font-semibold mb-6">Отправьте нам сообщение</h3>
                 <form onSubmit={handleContactSubmit} className="space-y-4">
-                  <div>
+                  <div className="transform transition-all duration-300 hover:translate-x-1">
                     <Input
                       type="text"
                       placeholder="Ваше имя"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required
-                      className="bg-background"
+                      className="bg-background transition-all duration-300 hover:border-primary focus:border-primary"
                     />
                   </div>
-                  <div>
+                  <div className="transform transition-all duration-300 hover:translate-x-1">
                     <Input
                       type="email"
                       placeholder="Электронная почта"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
-                      className="bg-background"
+                      className="bg-background transition-all duration-300 hover:border-primary focus:border-primary"
                     />
                   </div>
-                  <div>
+                  <div className="transform transition-all duration-300 hover:translate-x-1">
                     <Input
                       type="text"
                       placeholder="Тема сообщения"
                       value={subject}
                       onChange={(e) => setSubject(e.target.value)}
                       required
-                      className="bg-background"
+                      className="bg-background transition-all duration-300 hover:border-primary focus:border-primary"
                     />
                   </div>
-                  <div>
+                  <div className="transform transition-all duration-300 hover:translate-x-1">
                     <Textarea
                       placeholder="Ваше сообщение"
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       rows={4}
                       required
-                      className="bg-background"
+                      className="bg-background transition-all duration-300 hover:border-primary focus:border-primary"
                     />
                   </div>
-                  <Button type="submit" className="w-full">
+                  <Button 
+                    type="submit" 
+                    className="w-full transform transition-all duration-300 hover:scale-102 hover:shadow-md"
+                  >
                     Отправить сообщение
-                    <Send className="ml-2 h-4 w-4" />
+                    <Send className="ml-2 h-4 w-4 transform transition-all duration-300 group-hover:translate-x-1" />
                   </Button>
                 </form>
               </CardContent>

@@ -1,5 +1,6 @@
+
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useLanguage } from "@/components/LanguageProvider";
 import NavItem from "./NavItem";
 import HeaderControls from "./HeaderControls";
@@ -82,6 +83,17 @@ const Header = () => {
     }
   };
 
+  const handleLogoClick = () => {
+    if (location.pathname !== '/') {
+      // If not on home page, navigate to home page
+      window.location.href = '/';
+    } else {
+      // If already on home page, scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setIsMenuOpen(false);
+  };
+
   return (
     <header 
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -91,11 +103,14 @@ const Header = () => {
       }`}
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="flex items-center">
-          <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-primary-600 to-primary-500 bg-clip-text text-transparent">
+        <button 
+          onClick={handleLogoClick}
+          className="flex items-center group transition-transform duration-300 hover:scale-105"
+        >
+          <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-primary-600 to-primary-500 bg-clip-text text-transparent group-hover:from-primary-500 group-hover:to-primary-400 transition-all duration-300">
             GlobalLogix
           </h1>
-        </Link>
+        </button>
 
         <nav className="hidden md:flex items-center space-x-1">
           {navItems.map((item) => (
