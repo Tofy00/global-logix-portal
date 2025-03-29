@@ -5,37 +5,52 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
-import { MapPin, Mail, Clock, Send } from "lucide-react";
+import { toast } from "sonner";
+import { MapPin, Mail, Clock, Send, CheckCircle } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const ContactSection = () => {
   const { t } = useLanguage();
-  const { toast } = useToast();
   
   // Contact form state
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
     // In a real app, here you would send this to your backend
     console.log("Contact form submitted:", { name, email, subject, message });
     
-    toast({
-      title: t("common.success"),
-      description: t("common.successMessage"),
-      duration: 3000,
-    });
-    
-    // Reset form
-    setName("");
-    setEmail("");
-    setSubject("");
-    setMessage("");
+    // Simulate API call with timeout
+    setTimeout(() => {
+      // Show success notification with Sonner toast
+      toast.success(
+        <div className="flex items-center gap-2">
+          <CheckCircle className="h-5 w-5 text-green-500" />
+          <div className="flex flex-col">
+            <span className="font-medium">Сообщение успешно отправлено!</span>
+            <span className="text-sm text-muted-foreground">Мы свяжемся с вами в ближайшее время.</span>
+          </div>
+        </div>,
+        {
+          duration: 5000, // 5 seconds
+          position: "top-center",
+          className: "border-2 border-primary/20 shadow-lg",
+        }
+      );
+      
+      // Reset form
+      setName("");
+      setEmail("");
+      setSubject("");
+      setMessage("");
+      setIsSubmitting(false);
+    }, 800); // Simulate network delay for better UX
   };
 
   const contactInfo = [
@@ -126,6 +141,7 @@ const ContactSection = () => {
                       onChange={(e) => setName(e.target.value)}
                       required
                       className="bg-background transition-all duration-300 hover:border-primary focus:border-primary"
+                      disabled={isSubmitting}
                     />
                   </div>
                   <div className="transform transition-all duration-300 hover:translate-x-1">
@@ -136,6 +152,7 @@ const ContactSection = () => {
                       onChange={(e) => setEmail(e.target.value)}
                       required
                       className="bg-background transition-all duration-300 hover:border-primary focus:border-primary"
+                      disabled={isSubmitting}
                     />
                   </div>
                   <div className="transform transition-all duration-300 hover:translate-x-1">
@@ -146,6 +163,7 @@ const ContactSection = () => {
                       onChange={(e) => setSubject(e.target.value)}
                       required
                       className="bg-background transition-all duration-300 hover:border-primary focus:border-primary"
+                      disabled={isSubmitting}
                     />
                   </div>
                   <div className="transform transition-all duration-300 hover:translate-x-1">
@@ -156,13 +174,15 @@ const ContactSection = () => {
                       rows={4}
                       required
                       className="bg-background transition-all duration-300 hover:border-primary focus:border-primary"
+                      disabled={isSubmitting}
                     />
                   </div>
                   <Button 
                     type="submit" 
                     className="w-full transform transition-all duration-300 hover:scale-102 hover:shadow-md"
+                    disabled={isSubmitting}
                   >
-                    Отправить сообщение
+                    {isSubmitting ? "Отправка..." : "Отправить сообщение"}
                     <Send className="ml-2 h-4 w-4 transform transition-all duration-300 group-hover:translate-x-1" />
                   </Button>
                 </form>
