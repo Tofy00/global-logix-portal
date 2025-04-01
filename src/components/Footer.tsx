@@ -1,3 +1,4 @@
+
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLanguage } from "@/components/LanguageProvider";
 import { Separator } from "@/components/ui/separator";
@@ -63,8 +64,8 @@ const Footer = () => {
   const contactInfo = [
     {
       icon: <Phone className="h-5 w-5 text-primary-500 shrink-0" />,
-      text: "+7 (495) 123-4567",
-      href: "tel:+74951234567"
+      text: "+7 (925) 190-33-40",
+      href: "tel:+79251903340"
     },
     {
       icon: <Mail className="h-5 w-5 text-primary-500 shrink-0" />,
