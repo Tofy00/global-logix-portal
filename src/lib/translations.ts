@@ -170,7 +170,7 @@ export const translations = {
       emailPlaceholder: "Ваша эл. почта",
       telegramPlaceholder: "Ваш Telegram username",
       subscribeButton: "Подписаться",
-      copyright: "© 2025 GlobalLogix. Все права защищены."
+      copyright: "© 2025 WitLine. Все права защищены."
     }
   },
   en: {
@@ -337,13 +337,13 @@ export const translations = {
       cookies: "Cookie policy",
       contact: "Contact",
       phone: "+7 (495) 123-4567",
-      email: "info@globallogix.ru",
+      email: "info@witline.ru",
       address: "123 Lenin St, Moscow, Russia, 123456",
       subscribe: "Subscribe to news",
       subscribeText: "Stay up to date with the latest news and special offers",
       emailPlaceholder: "Your email",
       subscribeButton: "Subscribe",
-      copyright: "© 2023 GlobalLogix. All rights reserved."
+      copyright: "© 2023 WitLine. All rights reserved."
     }
   },
   zh: {
@@ -510,13 +510,13 @@ export const translations = {
       cookies: "Cookie政策",
       contact: "联系方式",
       phone: "+7 (495) 123-4567",
-      email: "info@globallogix.ru",
+      email: "info@witline.ru",
       address: "俄罗斯莫斯科列宁街123号，123456",
       subscribe: "订阅新闻",
       subscribeText: "及时了解最新消息和特别优惠",
       emailPlaceholder: "您的电子邮件",
       subscribeButton: "订阅",
-      copyright: "© 2023 GlobalLogix。保留所有权利。"
+      copyright: "© 2023 WitLine。保留所有权利。"
     }
   },
   tr: {
@@ -683,13 +683,13 @@ export const translations = {
       cookies: "Cookie Politikası",
       contact: "İletişim",
       phone: "+7 (495) 123-4567",
-      email: "info@globallogix.ru",
+      email: "info@witline.ru",
       address: "Lenin Caddesi 123, Moskova, Rusya, 123456",
       subscribe: "Haberlere Abone Olun",
       subscribeText: "En son haberlerden ve özel tekliflerden haberdar olun",
       emailPlaceholder: "E-posta adresiniz",
       subscribeButton: "Abone ol",
-      copyright: "© 2023 GlobalLogix. Tüm hakları saklıdır."
+      copyright: "© 2023 WitLine. Tüm hakları saklıdır."
     }
   }
 };

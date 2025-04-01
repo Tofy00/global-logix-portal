@@ -1,4 +1,3 @@
-
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLanguage } from "@/components/LanguageProvider";
 import { Separator } from "@/components/ui/separator";
@@ -101,7 +100,7 @@ const Footer = () => {
                 }}
                 className="text-xl font-bold text-foreground hover:text-primary transition-colors duration-300 transform hover:scale-105 w-fit"
               >
-                GlobalLogix
+                WitLine
               </button>
               
               <div className="flex space-x-4">
@@ -160,7 +159,7 @@ const Footer = () => {
           </div>
 
           <div className="mt-10 pt-6 border-t border-border/40 text-center text-muted-foreground text-sm">
-            <p>{t("footer.copyright")}</p>
+            <p>{t("footer.copyright").replace("GlobalLogix", "WitLine")}</p>
           </div>
         </div>
       </ScrollReveal>
