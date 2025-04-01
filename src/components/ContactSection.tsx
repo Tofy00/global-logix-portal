@@ -10,7 +10,7 @@ import { MapPin, Mail, Clock, Send, CheckCircle } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const ContactSection = () => {
-  const { t } = useLanguage();
+  const { t, currentLanguage } = useLanguage();
   
   // Contact form state
   const [name, setName] = useState("");
@@ -33,8 +33,8 @@ const ContactSection = () => {
         <div className="flex items-center gap-2">
           <CheckCircle className="h-5 w-5 text-green-500" />
           <div className="flex flex-col">
-            <span className="font-medium">Сообщение успешно отправлено!</span>
-            <span className="text-sm text-muted-foreground">Мы свяжемся с вами в ближайшее время.</span>
+            <span className="font-medium">{t("common.success")}</span>
+            <span className="text-sm text-muted-foreground">{t("common.successMessage")}</span>
           </div>
         </div>,
         {
@@ -56,22 +56,22 @@ const ContactSection = () => {
   const contactInfo = [
     {
       icon: <MapPin className="h-5 w-5 text-primary" />,
-      title: "Адрес офиса",
-      content: "просп. Вернадского, 41, стр. 1, Москва, Россия",
+      title: t("home.contact.moscow"),
+      content: t("home.contact.moscowAddress"),
       link: "https://maps.google.com/?q=просп.+Вернадского,+41,+стр.+1,+Москва,+Россия",
       isExternal: true
     },
     {
       icon: <Mail className="h-5 w-5 text-primary" />,
-      title: "Эл. почта",
-      content: "hello@witpower.ru",
+      title: t("home.contact.emailTitle"),
+      content: t("home.contact.email"),
       link: "mailto:hello@witpower.ru",
       isExternal: false
     },
     {
       icon: <Clock className="h-5 w-5 text-primary" />,
-      title: "Время работы",
-      content: "Пн–Пт, 10:00–19:00",
+      title: t("home.contact.workHours"),
+      content: t("home.contact.workHoursText"),
       link: "",
       isExternal: false
     },
@@ -131,12 +131,12 @@ const ContactSection = () => {
           <ScrollReveal delay={200}>
             <Card className="h-full transform transition-all duration-300 hover:shadow-lg dark:hover:shadow-primary/10">
               <CardContent className="p-6">
-                <h3 className="text-2xl font-semibold mb-6">Отправьте нам сообщение</h3>
+                <h3 className="text-2xl font-semibold mb-6">{t("home.contact.formTitle")}</h3>
                 <form onSubmit={handleContactSubmit} className="space-y-4">
                   <div className="transform transition-all duration-300 hover:translate-x-1">
                     <Input
                       type="text"
-                      placeholder="Ваше имя"
+                      placeholder={t("home.contact.namePlaceholder")}
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required
@@ -147,7 +147,7 @@ const ContactSection = () => {
                   <div className="transform transition-all duration-300 hover:translate-x-1">
                     <Input
                       type="email"
-                      placeholder="Электронная почта"
+                      placeholder={t("home.contact.emailPlaceholder")}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
@@ -158,7 +158,7 @@ const ContactSection = () => {
                   <div className="transform transition-all duration-300 hover:translate-x-1">
                     <Input
                       type="text"
-                      placeholder="Тема сообщения"
+                      placeholder={t("home.contact.subjectPlaceholder")}
                       value={subject}
                       onChange={(e) => setSubject(e.target.value)}
                       required
@@ -168,7 +168,7 @@ const ContactSection = () => {
                   </div>
                   <div className="transform transition-all duration-300 hover:translate-x-1">
                     <Textarea
-                      placeholder="Ваше сообщение"
+                      placeholder={t("home.contact.messagePlaceholder")}
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       rows={4}
@@ -182,7 +182,7 @@ const ContactSection = () => {
                     className="w-full transform transition-all duration-300 hover:scale-102 hover:shadow-md"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? "Отправка..." : "Отправить сообщение"}
+                    {isSubmitting ? t("common.loading") : t("home.contact.submitButton")}
                     <Send className="ml-2 h-4 w-4 transform transition-all duration-300 group-hover:translate-x-1" />
                   </Button>
                 </form>

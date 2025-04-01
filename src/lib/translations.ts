@@ -156,20 +156,10 @@ export const translations = {
       about: "О нас",
       services: "Услуги",
       team: "Команда",
-      careers: "Карьера",
-      legal: "Правовая информация",
-      terms: "Условия использования",
-      privacy: "Политика конфиденциальности",
-      cookies: "Политика cookie",
       contact: "Контакты",
-      phone: "+86 21 1234 5678",
+      phone: "+7 (925) 190-33-40",
       email: "hello@witpower.ru",
       address: "просп. Вернадского, 41, стр. 1, Москва, Россия",
-      subscribe: "Подписаться на новости",
-      subscribeText: "Будьте в курсе последних новостей и специальных предложений",
-      emailPlaceholder: "Ваша эл. почта",
-      telegramPlaceholder: "Ваш Telegram username",
-      subscribeButton: "Подписаться",
       copyright: "© 2025 WitLine. Все права защищены."
     }
   },
@@ -330,20 +320,11 @@ export const translations = {
       about: "About us",
       services: "Services",
       team: "Team",
-      careers: "Careers",
-      legal: "Legal",
-      terms: "Terms of use",
-      privacy: "Privacy policy",
-      cookies: "Cookie policy",
       contact: "Contact",
-      phone: "+7 (495) 123-4567",
-      email: "info@witline.ru",
-      address: "123 Lenin St, Moscow, Russia, 123456",
-      subscribe: "Subscribe to news",
-      subscribeText: "Stay up to date with the latest news and special offers",
-      emailPlaceholder: "Your email",
-      subscribeButton: "Subscribe",
-      copyright: "© 2023 WitLine. All rights reserved."
+      phone: "+7 (925) 190-33-40",
+      email: "hello@witpower.ru",
+      address: "Vernadsky Ave, 41, bldg. 1, Moscow, Russia",
+      copyright: "© 2025 WitLine. All rights reserved."
     }
   },
   zh: {
@@ -503,20 +484,11 @@ export const translations = {
       about: "关于我们",
       services: "服务",
       team: "团队",
-      careers: "职业发展",
-      legal: "法律信息",
-      terms: "使用条款",
-      privacy: "隐私政策",
-      cookies: "Cookie政策",
       contact: "联系方式",
-      phone: "+7 (495) 123-4567",
-      email: "info@witline.ru",
-      address: "俄罗斯莫斯科列宁街123号，123456",
-      subscribe: "订阅新闻",
-      subscribeText: "及时了解最新消息和特别优惠",
-      emailPlaceholder: "您的电子邮件",
-      subscribeButton: "订阅",
-      copyright: "© 2023 WitLine。保留所有权利。"
+      phone: "+7 (925) 190-33-40",
+      email: "hello@witpower.ru",
+      address: "俄罗斯莫斯科维尔纳茨基大道41号，1号楼",
+      copyright: "© 2025 WitLine。保留所有权利。"
     }
   },
   tr: {
@@ -676,20 +648,11 @@ export const translations = {
       about: "Hakkımızda",
       services: "Hizmetler",
       team: "Ekip",
-      careers: "Kariyer",
-      legal: "Yasal Bilgiler",
-      terms: "Kullanım Koşulları",
-      privacy: "Gizlilik Politikası",
-      cookies: "Cookie Politikası",
       contact: "İletişim",
-      phone: "+7 (495) 123-4567",
-      email: "info@witline.ru",
-      address: "Lenin Caddesi 123, Moskova, Rusya, 123456",
-      subscribe: "Haberlere Abone Olun",
-      subscribeText: "En son haberlerden ve özel tekliflerden haberdar olun",
-      emailPlaceholder: "E-posta adresiniz",
-      subscribeButton: "Abone ol",
-      copyright: "© 2023 WitLine. Tüm hakları saklıdır."
+      phone: "+7 (925) 190-33-40",
+      email: "hello@witpower.ru",
+      address: "Vernadsky Cad., 41, Bina 1, Moskova, Rusya",
+      copyright: "© 2025 WitLine. Tüm hakları saklıdır."
     }
   }
 };

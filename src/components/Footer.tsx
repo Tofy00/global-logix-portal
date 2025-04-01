@@ -1,5 +1,5 @@
 
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useLanguage } from "@/components/LanguageProvider";
 import { Separator } from "@/components/ui/separator";
 import { Mail, Phone, MapPin } from "lucide-react";
@@ -64,17 +64,17 @@ const Footer = () => {
   const contactInfo = [
     {
       icon: <Phone className="h-5 w-5 text-primary-500 shrink-0" />,
-      text: "+7 (925) 190-33-40",
+      text: t("footer.phone"),
       href: "tel:+79251903340"
     },
     {
       icon: <Mail className="h-5 w-5 text-primary-500 shrink-0" />,
-      text: "hello@witpower.ru",
+      text: t("footer.email"),
       href: "mailto:hello@witpower.ru"
     },
     {
       icon: <MapPin className="h-5 w-5 text-primary-500 shrink-0" />,
-      text: "просп. Вернадского, 41, стр. 1, Москва, Россия",
+      text: t("footer.address"),
       href: "https://maps.google.com/?q=просп.+Вернадского,+41,+стр.+1,+Москва,+Россия"
     }
   ];
@@ -160,7 +160,7 @@ const Footer = () => {
           </div>
 
           <div className="mt-10 pt-6 border-t border-border/40 text-center text-muted-foreground text-sm">
-            <p>{t("footer.copyright").replace("GlobalLogix", "WitLine")}</p>
+            <p>{t("footer.copyright")}</p>
           </div>
         </div>
       </ScrollReveal>
