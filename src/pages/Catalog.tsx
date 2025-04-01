@@ -8,6 +8,7 @@ import FilterSidebar from "@/components/catalog/FilterSidebar";
 import SearchToolbar from "@/components/catalog/SearchToolbar";
 import CategoryTabs from "@/components/catalog/CategoryTabs";
 import ProductsGrid from "@/components/catalog/ProductsGrid";
+import ProductPagination from "@/components/catalog/ProductPagination";
 import { components } from "@/data/componentData";
 import { useCatalogFilters } from "@/hooks/useCatalogFilters";
 
@@ -33,7 +34,7 @@ const Catalog = () => {
     { id: "priceDesc", label: t("catalog.priceDesc") },
   ];
 
-  // Use custom hook for filtering and sorting
+  // Use custom hook for filtering and sorting (now with pagination)
   const {
     searchQuery,
     setSearchQuery,
@@ -43,8 +44,14 @@ const Catalog = () => {
     setInStockOnly,
     sortOption,
     setSortOption,
-    filteredComponents
-  } = useCatalogFilters({ components });
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    paginatedComponents
+  } = useCatalogFilters({ 
+    components,
+    itemsPerPage: 6 // Show 6 items per page
+  });
 
   // Handler functions
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -127,8 +134,15 @@ const Catalog = () => {
 
             {/* Components List/Grid */}
             <ProductsGrid 
-              products={filteredComponents} 
+              products={paginatedComponents} 
               viewMode={viewMode} 
+            />
+            
+            {/* Pagination */}
+            <ProductPagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
             />
           </div>
         </div>

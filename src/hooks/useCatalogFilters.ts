@@ -7,19 +7,31 @@ interface UseCatalogFiltersProps {
   initialCategory?: string;
   initialInStockOnly?: boolean;
   initialSortOption?: string;
+  initialPage?: number;
+  itemsPerPage?: number;
 }
 
 export const useCatalogFilters = ({
   components,
   initialCategory = "all",
   initialInStockOnly = false,
-  initialSortOption = "nameAsc"
+  initialSortOption = "nameAsc",
+  initialPage = 1,
+  itemsPerPage = 6
 }: UseCatalogFiltersProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [inStockOnly, setInStockOnly] = useState(initialInStockOnly);
   const [sortOption, setSortOption] = useState(initialSortOption);
+  const [currentPage, setCurrentPage] = useState(initialPage);
   const [filteredComponents, setFilteredComponents] = useState<Component[]>([]);
+  const [paginatedComponents, setPaginatedComponents] = useState<Component[]>([]);
+  const [totalPages, setTotalPages] = useState(1);
+
+  // Reset to first page when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, activeCategory, inStockOnly, sortOption]);
 
   // Filter components based on search, category, and in-stock status
   useEffect(() => {
@@ -51,7 +63,17 @@ export const useCatalogFilters = ({
     filtered = sortComponents(filtered, sortOption);
 
     setFilteredComponents(filtered);
-  }, [searchQuery, activeCategory, inStockOnly, sortOption, components]);
+    
+    // Calculate total pages
+    setTotalPages(Math.max(1, Math.ceil(filtered.length / itemsPerPage)));
+  }, [searchQuery, activeCategory, inStockOnly, sortOption, components, itemsPerPage]);
+
+  // Apply pagination
+  useEffect(() => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    setPaginatedComponents(filteredComponents.slice(startIndex, endIndex));
+  }, [filteredComponents, currentPage, itemsPerPage]);
 
   // Sort function
   const sortComponents = (
@@ -83,6 +105,10 @@ export const useCatalogFilters = ({
     setInStockOnly,
     sortOption,
     setSortOption,
-    filteredComponents
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    filteredComponents,
+    paginatedComponents
   };
 };
