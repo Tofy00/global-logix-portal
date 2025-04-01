@@ -1,9 +1,9 @@
 
 import { useLanguage } from "@/components/LanguageProvider";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 import { CategoryOption } from "@/types/catalog";
+import CategoryList from "./CategoryList";
+import AvailabilityFilter from "./AvailabilityFilter";
 
 interface FilterSidebarProps {
   categories: CategoryOption[];
@@ -31,36 +31,16 @@ const FilterSidebar = ({
           <CardTitle>{t("catalog.filters")}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div>
-            <h3 className="font-medium mb-3">{t("catalog.categories")}</h3>
-            <div className="space-y-1.5">
-              {categories.map((category) => (
-                <div
-                  key={category.id}
-                  className={`px-3 py-1.5 rounded-md cursor-pointer transition-colors ${
-                    activeCategory === category.id
-                      ? "bg-primary/10 text-primary font-medium"
-                      : "hover:bg-accent"
-                  }`}
-                  onClick={() => onCategoryChange(category.id)}
-                >
-                  {category.label}
-                </div>
-              ))}
-            </div>
-          </div>
+          <CategoryList 
+            categories={categories}
+            activeCategory={activeCategory}
+            onCategoryChange={onCategoryChange}
+          />
 
-          <div>
-            <h3 className="font-medium mb-3">{t("catalog.availability")}</h3>
-            <div className="flex items-center space-x-2">
-              <Checkbox
-                id="inStock"
-                checked={inStockOnly}
-                onCheckedChange={(checked) => onStockFilterChange(!!checked)}
-              />
-              <Label htmlFor="inStock">{t("catalog.inStock")}</Label>
-            </div>
-          </div>
+          <AvailabilityFilter
+            inStockOnly={inStockOnly}
+            onStockFilterChange={onStockFilterChange}
+          />
         </CardContent>
       </Card>
     </div>
