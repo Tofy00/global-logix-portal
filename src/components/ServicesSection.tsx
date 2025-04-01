@@ -1,7 +1,6 @@
 
 import { useLanguage } from "@/components/LanguageProvider";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { ShieldCheck, Headphones, BarChart3, Users, Award, Truck } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 
@@ -76,17 +75,9 @@ const ServicesSection = () => {
                     {service.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="flex-grow">
+                <CardContent className="flex-grow pb-6">
                   <p className="text-muted-foreground">{service.description}</p>
                 </CardContent>
-                <CardFooter>
-                  <Button 
-                    variant="ghost" 
-                    className="p-0 h-auto group-hover:text-primary transition-colors duration-300 hover:bg-transparent"
-                  >
-                    {t("common.readMore")}
-                  </Button>
-                </CardFooter>
               </Card>
             </ScrollReveal>
           ))}
