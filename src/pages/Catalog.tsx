@@ -338,7 +338,7 @@ const Catalog = () => {
                 {filteredComponents.map((component, idx) => (
                   <ScrollReveal key={component.id} delay={idx * 50}>
                     <Card
-                      className={`overflow-hidden transition-shadow ${
+                      className={`overflow-hidden transition-shadow hover:shadow-md ${
                         viewMode === "list" ? "flex flex-col sm:flex-row" : ""
                       }`}
                     >
@@ -360,12 +360,14 @@ const Catalog = () => {
                             : "flex flex-col flex-grow"
                         }
                       >
-                        <CardHeader>
-                          <div className="flex justify-between items-start gap-2">
-                            <CardTitle className="truncate">{component.name}</CardTitle>
+                        <CardHeader className="pb-2">
+                          <div className="flex justify-between items-start gap-3">
+                            <CardTitle className="truncate max-w-[70%]">
+                              {component.name}
+                            </CardTitle>
                             <Badge
                               variant={component.inStock ? "default" : "secondary"}
-                              className="shrink-0 whitespace-nowrap"
+                              className="shrink-0 whitespace-nowrap self-start mt-1"
                             >
                               {component.inStock
                                 ? t("catalog.inStock")
@@ -373,10 +375,12 @@ const Catalog = () => {
                             </Badge>
                           </div>
                         </CardHeader>
-                        <CardContent>
-                          <p className="text-muted-foreground mb-4 line-clamp-3">
-                            {component.description}
-                          </p>
+                        <CardContent className="py-2">
+                          <div className="min-h-[4.5rem]">
+                            <p className="text-muted-foreground mb-4 line-clamp-3">
+                              {component.description}
+                            </p>
+                          </div>
                           <p className="text-lg font-bold">${component.price.toFixed(2)}</p>
                         </CardContent>
                         <CardFooter
