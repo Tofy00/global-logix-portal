@@ -1,13 +1,12 @@
 
 import { useLanguage } from "@/components/LanguageProvider";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
+import { ChevronDown } from "lucide-react";
 
 const HeroSection = () => {
   const { t } = useLanguage();
 
-  const scrollToServices = () => {
+  const scrollToContent = () => {
     const servicesElement = document.getElementById("services");
     if (servicesElement) {
       servicesElement.scrollIntoView({ behavior: "smooth" });
@@ -17,7 +16,7 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden pt-16"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
     >
       {/* Background Image */}
       <div
@@ -31,40 +30,30 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/50"></div>
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 py-32 text-white">
-        <div className="max-w-3xl">
+      <div className="container relative z-10 mx-auto px-4 py-32 text-white text-center">
+        <div className="max-w-3xl mx-auto">
           <ScrollReveal>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-md">
-              {t("home.hero.title")}
+              Ваш надёжный партнёр в мире электронных компонентов
             </h1>
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
-            <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl drop-shadow-sm">
-              {t("home.hero.subtitle")}
+            <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto drop-shadow-sm">
+              Поставляем качественные компоненты для вашего бизнеса уже более 15 лет. 
+              Доверие, профессионализм и инновации — основа нашего сотрудничества.
             </p>
-          </ScrollReveal>
-
-          <ScrollReveal delay={400}>
-            <Button
-              size="lg"
-              onClick={scrollToServices}
-              className="text-base bg-secondary hover:bg-secondary/90 text-white dark:text-white shadow-lg transition-all duration-300 group"
-            >
-              {t("home.hero.cta")}
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
           </ScrollReveal>
         </div>
       </div>
 
-      {/* Scroll Indicator - improved animation */}
+      {/* Animated arrow down indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
         <div
-          className="w-8 h-12 border-2 border-white/50 dark:border-white/50 rounded-full flex justify-center p-1 cursor-pointer animate-bounce hover:border-white/80 transition-colors"
-          onClick={scrollToServices}
+          className="cursor-pointer text-white/80 hover:text-white transition-colors"
+          onClick={scrollToContent}
         >
-          <div className="w-1 h-3 bg-white/80 rounded-full mt-1"></div>
+          <ChevronDown className="w-10 h-10 animate-bounce" />
         </div>
       </div>
     </section>
