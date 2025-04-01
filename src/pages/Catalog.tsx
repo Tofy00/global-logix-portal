@@ -338,7 +338,7 @@ const Catalog = () => {
                 {filteredComponents.map((component, idx) => (
                   <ScrollReveal key={component.id} delay={idx * 50}>
                     <Card
-                      className={`overflow-hidden h-full hover:shadow-md transition-shadow ${
+                      className={`overflow-hidden transition-shadow ${
                         viewMode === "list" ? "flex flex-col sm:flex-row" : ""
                       }`}
                     >
@@ -355,14 +355,17 @@ const Catalog = () => {
                       </div>
                       <div
                         className={
-                          viewMode === "list" ? "sm:w-2/3 lg:w-3/4 flex flex-col" : ""
+                          viewMode === "list" 
+                            ? "sm:w-2/3 lg:w-3/4 flex flex-col flex-grow" 
+                            : "flex flex-col flex-grow"
                         }
                       >
                         <CardHeader>
-                          <div className="flex justify-between items-start">
-                            <CardTitle>{component.name}</CardTitle>
+                          <div className="flex justify-between items-start gap-2">
+                            <CardTitle className="truncate">{component.name}</CardTitle>
                             <Badge
                               variant={component.inStock ? "default" : "secondary"}
+                              className="shrink-0 whitespace-nowrap"
                             >
                               {component.inStock
                                 ? t("catalog.inStock")
@@ -371,24 +374,24 @@ const Catalog = () => {
                           </div>
                         </CardHeader>
                         <CardContent>
-                          <p className="text-muted-foreground mb-4">
+                          <p className="text-muted-foreground mb-4 line-clamp-3">
                             {component.description}
                           </p>
                           <p className="text-lg font-bold">${component.price.toFixed(2)}</p>
                         </CardContent>
                         <CardFooter
-                          className={`flex ${
+                          className={`flex flex-wrap gap-2 ${
                             viewMode === "list"
-                              ? "justify-end mt-auto"
+                              ? "justify-end"
                               : "justify-between"
                           }`}
                         >
-                          <Button variant="outline">
+                          <Button variant="outline" className="whitespace-nowrap">
                             {t("catalog.moreDetails")}
                           </Button>
                           <Button
                             variant="default"
-                            className="ml-2"
+                            className="whitespace-nowrap"
                             disabled={!component.inStock}
                           >
                             {t("catalog.addToCart")}
