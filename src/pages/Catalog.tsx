@@ -1,104 +1,22 @@
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from "@/components/ui/badge";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
-import { Search, Filter, LayoutGrid, List, ChevronDown } from "lucide-react";
+import { Filter, ChevronDown } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
-
-interface Component {
-  id: string;
-  name: string;
-  category: string;
-  price: number;
-  description: string;
-  inStock: boolean;
-  image?: string;
-}
+import FilterSidebar from "@/components/catalog/FilterSidebar";
+import SearchToolbar from "@/components/catalog/SearchToolbar";
+import CategoryTabs from "@/components/catalog/CategoryTabs";
+import ProductsGrid from "@/components/catalog/ProductsGrid";
+import { components } from "@/data/componentData";
+import { useCatalogFilters } from "@/hooks/useCatalogFilters";
 
 const Catalog = () => {
   const { t } = useLanguage();
-  const [searchQuery, setSearchQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState("all");
-  const [inStockOnly, setInStockOnly] = useState(false);
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const [sortOption, setSortOption] = useState("nameAsc");
   const [showFilters, setShowFilters] = useState(false);
-  const [filteredComponents, setFilteredComponents] = useState<Component[]>([]);
-
-  // Mock data
-  const components: Component[] = [
-    {
-      id: "comp1",
-      name: "ATmega328P",
-      category: "microcontrollers",
-      price: 2.5,
-      description: "8-bit AVR microcontroller with 32KB flash memory",
-      inStock: true,
-    },
-    {
-      id: "comp2",
-      name: "ESP32-WROOM-32",
-      category: "microcontrollers",
-      price: 4.8,
-      description: "Powerful, generic Wi-Fi+BT+BLE MCU module",
-      inStock: true,
-    },
-    {
-      id: "comp3",
-      name: "BC547",
-      category: "transistors",
-      price: 0.1,
-      description: "NPN general purpose transistor",
-      inStock: true,
-    },
-    {
-      id: "comp4",
-      name: "2N2222",
-      category: "transistors",
-      price: 0.15,
-      description: "NPN switching transistor",
-      inStock: false,
-    },
-    {
-      id: "comp5",
-      name: "10K Ohm",
-      category: "resistors",
-      price: 0.02,
-      description: "1/4W 5% tolerance resistor",
-      inStock: true,
-    },
-    {
-      id: "comp6",
-      name: "100 uF",
-      category: "capacitors",
-      price: 0.3,
-      description: "Electrolytic capacitor, 25V",
-      inStock: true,
-    },
-    {
-      id: "comp7",
-      name: "10 uH",
-      category: "inductors",
-      price: 0.25,
-      description: "Radial lead inductor",
-      inStock: false,
-    },
-    {
-      id: "comp8",
-      name: "STM32F103C8T6",
-      category: "microcontrollers",
-      price: 3.9,
-      description: "ARM Cortex-M3 microcontroller",
-      inStock: true,
-    },
-  ];
-
+  
+  // Get categories and sort options with translations
   const categories = [
     { id: "all", label: t("catalog.all") },
     { id: "microcontrollers", label: t("catalog.category1") },
@@ -107,7 +25,7 @@ const Catalog = () => {
     { id: "capacitors", label: t("catalog.category4") },
     { id: "inductors", label: t("catalog.category5") },
   ];
-
+  
   const sortOptions = [
     { id: "nameAsc", label: t("catalog.nameAsc") },
     { id: "nameDesc", label: t("catalog.nameDesc") },
@@ -115,70 +33,28 @@ const Catalog = () => {
     { id: "priceDesc", label: t("catalog.priceDesc") },
   ];
 
-  // Filter components based on search, category, and in-stock status
-  useEffect(() => {
-    let filtered = [...components];
+  // Use custom hook for filtering and sorting
+  const {
+    searchQuery,
+    setSearchQuery,
+    activeCategory,
+    setActiveCategory,
+    inStockOnly,
+    setInStockOnly,
+    sortOption,
+    setSortOption,
+    filteredComponents
+  } = useCatalogFilters({ components });
 
-    // Filter by search query
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase();
-      filtered = filtered.filter(
-        (component) =>
-          component.name.toLowerCase().includes(query) ||
-          component.description.toLowerCase().includes(query)
-      );
-    }
-
-    // Filter by category
-    if (activeCategory !== "all") {
-      filtered = filtered.filter(
-        (component) => component.category === activeCategory
-      );
-    }
-
-    // Filter by stock
-    if (inStockOnly) {
-      filtered = filtered.filter((component) => component.inStock);
-    }
-
-    // Sort components
-    filtered = sortComponents(filtered, sortOption);
-
-    setFilteredComponents(filtered);
-  }, [searchQuery, activeCategory, inStockOnly, sortOption]);
-
-  // Sort function
-  const sortComponents = (
-    components: Component[],
-    sortOption: string
-  ): Component[] => {
-    const sortedComponents = [...components];
-
-    switch (sortOption) {
-      case "nameAsc":
-        return sortedComponents.sort((a, b) => a.name.localeCompare(b.name));
-      case "nameDesc":
-        return sortedComponents.sort((a, b) => b.name.localeCompare(a.name));
-      case "priceAsc":
-        return sortedComponents.sort((a, b) => a.price - b.price);
-      case "priceDesc":
-        return sortedComponents.sort((a, b) => b.price - a.price);
-      default:
-        return sortedComponents;
-    }
-  };
-
-  // Handle search input change
+  // Handler functions
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
 
-  // Handle category change
   const handleCategoryChange = (value: string) => {
     setActiveCategory(value);
   };
 
-  // Toggle filter panel on mobile
   const toggleFilters = () => {
     setShowFilters(!showFilters);
   };
@@ -220,197 +96,40 @@ const Catalog = () => {
 
         <div className="flex flex-col md:flex-row gap-6">
           {/* Sidebar / Filters */}
-          <div
-            className={`md:w-1/4 space-y-6 ${
-              showFilters ? "block" : "hidden md:block"
-            }`}
-          >
-            <Card className="sticky top-24">
-              <CardHeader>
-                <CardTitle>{t("catalog.filters")}</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div>
-                  <h3 className="font-medium mb-3">{t("catalog.categories")}</h3>
-                  <div className="space-y-1.5">
-                    {categories.map((category) => (
-                      <div
-                        key={category.id}
-                        className={`px-3 py-1.5 rounded-md cursor-pointer transition-colors ${
-                          activeCategory === category.id
-                            ? "bg-primary/10 text-primary font-medium"
-                            : "hover:bg-accent"
-                        }`}
-                        onClick={() => handleCategoryChange(category.id)}
-                      >
-                        {category.label}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="font-medium mb-3">{t("catalog.availability")}</h3>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="inStock"
-                      checked={inStockOnly}
-                      onCheckedChange={(checked) => setInStockOnly(!!checked)}
-                    />
-                    <Label htmlFor="inStock">{t("catalog.inStock")}</Label>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+          <FilterSidebar 
+            categories={categories}
+            activeCategory={activeCategory}
+            inStockOnly={inStockOnly}
+            onCategoryChange={handleCategoryChange}
+            onStockFilterChange={setInStockOnly}
+            showFilters={showFilters}
+          />
 
           {/* Main Content */}
           <div className="md:w-3/4 space-y-6">
             {/* Search and Toolbar */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                <Input
-                  placeholder={t("catalog.search")}
-                  value={searchQuery}
-                  onChange={handleSearchChange}
-                  className="pl-9"
-                />
-              </div>
-              <div className="flex space-x-2">
-                <select
-                  className="bg-background border border-input rounded-md h-10 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-                  value={sortOption}
-                  onChange={(e) => setSortOption(e.target.value)}
-                >
-                  <option value="" disabled>
-                    {t("catalog.sort")}
-                  </option>
-                  {sortOptions.map((option) => (
-                    <option key={option.id} value={option.id}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-                <div className="flex border rounded-md overflow-hidden">
-                  <Button
-                    variant={viewMode === "grid" ? "default" : "ghost"}
-                    size="icon"
-                    onClick={() => setViewMode("grid")}
-                  >
-                    <LayoutGrid className="h-4 w-4" />
-                  </Button>
-                  <Button
-                    variant={viewMode === "list" ? "default" : "ghost"}
-                    size="icon"
-                    onClick={() => setViewMode("list")}
-                  >
-                    <List className="h-4 w-4" />
-                  </Button>
-                </div>
-              </div>
-            </div>
+            <SearchToolbar
+              searchQuery={searchQuery}
+              sortOption={sortOption}
+              viewMode={viewMode}
+              sortOptions={sortOptions}
+              onSearchChange={handleSearchChange}
+              onSortChange={setSortOption}
+              onViewModeChange={setViewMode}
+            />
 
             {/* Tabs for categories on desktop */}
-            <Tabs
-              value={activeCategory}
-              onValueChange={handleCategoryChange}
-              className="hidden md:block"
-            >
-              <TabsList className="w-full justify-start">
-                {categories.map((category) => (
-                  <TabsTrigger key={category.id} value={category.id}>
-                    {category.label}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </Tabs>
+            <CategoryTabs
+              categories={categories}
+              activeCategory={activeCategory}
+              onCategoryChange={handleCategoryChange}
+            />
 
             {/* Components List/Grid */}
-            {filteredComponents.length > 0 ? (
-              <div
-                className={
-                  viewMode === "grid"
-                    ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-                    : "space-y-4"
-                }
-              >
-                {filteredComponents.map((component, idx) => (
-                  <ScrollReveal key={component.id} delay={idx * 50}>
-                    <Card
-                      className={`overflow-hidden transition-shadow hover:shadow-md ${
-                        viewMode === "list" ? "flex flex-col sm:flex-row" : ""
-                      }`}
-                    >
-                      <div
-                        className={
-                          viewMode === "list" ? "sm:w-1/3 lg:w-1/4" : ""
-                        }
-                      >
-                        <div className="aspect-square bg-accent/50 flex items-center justify-center p-4">
-                          <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center text-primary font-medium text-xl">
-                            {component.name.substring(0, 2)}
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        className={
-                          viewMode === "list" 
-                            ? "sm:w-2/3 lg:w-3/4 flex flex-col flex-grow" 
-                            : "flex flex-col flex-grow"
-                        }
-                      >
-                        <CardHeader className="pb-2">
-                          <div className="flex justify-between items-start gap-3">
-                            <CardTitle className="truncate max-w-[70%]">
-                              {component.name}
-                            </CardTitle>
-                            <Badge
-                              variant={component.inStock ? "default" : "secondary"}
-                              className="shrink-0 whitespace-nowrap self-start mt-1"
-                            >
-                              {component.inStock
-                                ? t("catalog.inStock")
-                                : t("catalog.outOfStock")}
-                            </Badge>
-                          </div>
-                        </CardHeader>
-                        <CardContent className="py-2">
-                          <div className="min-h-[4.5rem]">
-                            <p className="text-muted-foreground mb-4 line-clamp-3">
-                              {component.description}
-                            </p>
-                          </div>
-                          <p className="text-lg font-bold">${component.price.toFixed(2)}</p>
-                        </CardContent>
-                        <CardFooter
-                          className={`flex flex-wrap gap-2 ${
-                            viewMode === "list"
-                              ? "justify-end"
-                              : "justify-between"
-                          }`}
-                        >
-                          <Button variant="outline" className="whitespace-nowrap">
-                            {t("catalog.moreDetails")}
-                          </Button>
-                          <Button
-                            variant="default"
-                            className="whitespace-nowrap"
-                            disabled={!component.inStock}
-                          >
-                            {t("catalog.addToCart")}
-                          </Button>
-                        </CardFooter>
-                      </div>
-                    </Card>
-                  </ScrollReveal>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-12">
-                <h3 className="text-lg font-medium mb-2">{t("catalog.noResults")}</h3>
-              </div>
-            )}
+            <ProductsGrid 
+              products={filteredComponents} 
+              viewMode={viewMode} 
+            />
           </div>
         </div>
       </div>
