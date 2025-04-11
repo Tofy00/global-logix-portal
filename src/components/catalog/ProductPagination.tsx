@@ -1,13 +1,52 @@
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import { useLanguage } from "@/components/LanguageProvider";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+// Определим тип для PaginationLink
+interface PaginationLinkProps {
+  href?: string; 
+  isActive?: boolean;
+  children: React.ReactNode;
+  className?: string;
+  "aria-current"?: "page";
+  disabled?: boolean; // Добавляем поддержку disabled для совместимости
+}
+
+// Предполагаем, что компонент PaginationLink выглядит так:
+const PaginationLink = ({
+  href,
+  isActive,
+  children,
+  className,
+  ...props
+}: PaginationLinkProps) => {
+  // Компонент должен обрабатывать disabled как prop
+  const isDisabled = props.disabled === true;
+  
+  // Используем правильный компонент в зависимости от того, disabled он или нет
+  if (isDisabled) {
+    return (
+      <span
+        className={`flex h-10 w-10 items-center justify-center rounded-md text-sm border border-input bg-background text-muted-foreground opacity-50 cursor-not-allowed ${className}`}
+        aria-disabled="true"
+      >
+        {children}
+      </span>
+    );
+  }
+  
+  return (
+    <Button
+      variant="outline"
+      size="icon"
+      className={className}
+      disabled={isDisabled}
+      {...props}
+    >
+      {children}
+    </Button>
+  );
+};
 
 interface ProductPaginationProps {
   currentPage: number;
@@ -15,103 +54,88 @@ interface ProductPaginationProps {
   onPageChange: (page: number) => void;
 }
 
-const ProductPagination = ({
+const ProductPagination: React.FC<ProductPaginationProps> = ({
   currentPage,
   totalPages,
   onPageChange,
-}: ProductPaginationProps) => {
-  const { t } = useLanguage();
-
-  // Don't render pagination if there's only one page
-  if (totalPages <= 1) return null;
-
-  // Generate page numbers to display (show maximum 5 pages)
+}) => {
   const getPageNumbers = () => {
     const pageNumbers = [];
-    const maxPagesToShow = 5;
-    
-    // If we have 5 or fewer pages, show all of them
-    if (totalPages <= maxPagesToShow) {
+    if (totalPages <= 7) {
+      // Display all pages if total is 7 or less
       for (let i = 1; i <= totalPages; i++) {
         pageNumbers.push(i);
       }
     } else {
-      // If we have more than 5 pages, show a window around the current page
+      // Complex logic for more than 7 pages
       if (currentPage <= 3) {
-        // Near the start, show 1, 2, 3, 4, ... lastPage
-        for (let i = 1; i <= 4; i++) {
+        // Near the beginning
+        for (let i = 1; i <= 5; i++) {
           pageNumbers.push(i);
         }
+        pageNumbers.push("...");
         pageNumbers.push(totalPages);
       } else if (currentPage >= totalPages - 2) {
-        // Near the end, show 1, ... lastPage-3, lastPage-2, lastPage-1, lastPage
+        // Near the end
         pageNumbers.push(1);
-        for (let i = totalPages - 3; i <= totalPages; i++) {
+        pageNumbers.push("...");
+        for (let i = totalPages - 4; i <= totalPages; i++) {
           pageNumbers.push(i);
         }
       } else {
-        // In the middle, show 1, ... currentPage-1, currentPage, currentPage+1, ... lastPage
+        // In the middle
         pageNumbers.push(1);
+        pageNumbers.push("...");
         for (let i = currentPage - 1; i <= currentPage + 1; i++) {
           pageNumbers.push(i);
         }
+        pageNumbers.push("...");
         pageNumbers.push(totalPages);
       }
     }
-    
     return pageNumbers;
   };
 
+  const pageNumbers = getPageNumbers();
+
   return (
-    <Pagination className="mt-8">
-      <PaginationContent>
-        <PaginationItem>
-          <PaginationPrevious
-            onClick={() => currentPage > 1 && onPageChange(currentPage - 1)}
-            className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
-            aria-disabled={currentPage === 1}
-          />
-        </PaginationItem>
-
-        {getPageNumbers().map((page, i, array) => (
-          <PaginationItem key={page}>
-            {/* If there's a gap between numbers, show ellipsis */}
-            {i > 0 && page - array[i - 1] > 1 ? (
-              <>
-                <PaginationItem>
-                  <PaginationLink disabled>...</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink 
-                    isActive={page === currentPage}
-                    onClick={() => onPageChange(page)}
-                    className="cursor-pointer"
-                  >
-                    {page}
-                  </PaginationLink>
-                </PaginationItem>
-              </>
-            ) : (
-              <PaginationLink 
-                isActive={page === currentPage}
-                onClick={() => onPageChange(page)}
-                className="cursor-pointer"
-              >
-                {page}
-              </PaginationLink>
-            )}
-          </PaginationItem>
-        ))}
-
-        <PaginationItem>
-          <PaginationNext
-            onClick={() => currentPage < totalPages && onPageChange(currentPage + 1)}
-            className={currentPage === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer"}
-            aria-disabled={currentPage === totalPages}
-          />
-        </PaginationItem>
-      </PaginationContent>
-    </Pagination>
+    <div className="flex w-full items-center justify-center gap-2">
+      <Button
+        variant="outline"
+        size="icon"
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        aria-label="Go to previous page"
+      >
+        <ChevronLeft className="h-4 w-4" />
+      </Button>
+      {pageNumbers.map((page, index) =>
+        page === "..." ? (
+          <span key={`ellipsis-${index}`} className="px-2">
+            {page}
+          </span>
+        ) : (
+          <PaginationLink
+            key={page}
+            onClick={() => onPageChange(Number(page))}
+            className={currentPage === page ? "active" : ""}
+            aria-current={currentPage === page ? "page" : undefined}
+            disabled={currentPage === page}
+          >
+            {page}
+          </PaginationLink>
+        )
+      )}
+      <Button
+        variant="outline"
+        size="icon"
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        aria-label="Go to next page"
+      >
+        <ChevronRight className="h-4 w-4" />
+      </Button>
+    </div>
   );
 };
 
