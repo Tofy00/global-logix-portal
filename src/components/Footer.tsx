@@ -4,7 +4,6 @@ import { useLanguage } from "@/components/LanguageProvider";
 import { Separator } from "@/components/ui/separator";
 import { Mail, Phone, MapPin } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
-import Logo from "@/components/Logo";
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -64,13 +63,16 @@ const Footer = () => {
       <ScrollReveal>
         <div className="container py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Company Info - Logo */}
+            {/* Company Info - Social icons removed */}
             <div className="flex flex-col space-y-6">
-              <Logo 
+              <button 
                 onClick={() => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
-                }} 
-              />
+                }}
+                className="text-xl font-bold text-foreground hover:text-primary transition-colors duration-300 transform hover:scale-105 w-fit"
+              >
+                WitLine
+              </button>
             </div>
 
             {/* Company Links */}
