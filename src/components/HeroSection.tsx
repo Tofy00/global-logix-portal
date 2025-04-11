@@ -34,13 +34,14 @@ const HeroSection = () => {
         <div className="max-w-3xl mx-auto">
           <ScrollReveal>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-md">
-              {t("home.hero.title")}
+              Ваш надёжный партнёр в мире электронных компонентов
             </h1>
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
             <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto drop-shadow-sm">
-              {t("home.hero.subtitle")}
+              Поставляем качественные компоненты для вашего бизнеса уже более 15 лет. 
+              Доверие, профессионализм и инновации — основа нашего сотрудничества.
             </p>
           </ScrollReveal>
         </div>
