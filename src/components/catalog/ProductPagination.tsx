@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -10,6 +11,7 @@ interface PaginationLinkProps {
   className?: string;
   "aria-current"?: "page";
   disabled?: boolean; // Добавляем поддержку disabled для совместимости
+  onClick?: () => void; // Добавляем поддержку onClick
 }
 
 // Предполагаем, что компонент PaginationLink выглядит так:
@@ -18,6 +20,7 @@ const PaginationLink = ({
   isActive,
   children,
   className,
+  onClick,
   ...props
 }: PaginationLinkProps) => {
   // Компонент должен обрабатывать disabled как prop
@@ -41,6 +44,7 @@ const PaginationLink = ({
       size="icon"
       className={className}
       disabled={isDisabled}
+      onClick={onClick}
       {...props}
     >
       {children}
