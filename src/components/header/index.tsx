@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useLanguage } from "@/components/LanguageProvider";
@@ -103,7 +104,7 @@ const Header = () => {
       }`}
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
-        <Logo />
+        <Logo onClick={handleLogoClick} />
 
         <nav className="hidden md:flex items-center space-x-1">
           {navItems.map((item) => (

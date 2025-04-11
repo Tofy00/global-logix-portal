@@ -66,7 +66,11 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Company Info - Logo */}
             <div className="flex flex-col space-y-6">
-              <Logo className="mx-auto md:mx-0" />
+              <Logo 
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }} 
+              />
             </div>
 
             {/* Company Links */}
