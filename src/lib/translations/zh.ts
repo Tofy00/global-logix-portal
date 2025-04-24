@@ -1,4 +1,3 @@
-
 export const zh = {
   common: {
     loading: "加载中...",
@@ -16,7 +15,8 @@ export const zh = {
     success: "成功！",
     error: "错误！",
     successMessage: "您的留言已成功发送。我们将很快与您联系。",
-    errorMessage: "发送留言时出错。请稍后再试。"
+    errorMessage: "发送留言时出错。请稍后再试。",
+    supplyProgram: "查看供应计划"
   },
   nav: {
     home: "首页",
@@ -95,7 +95,8 @@ export const zh = {
       clients: "500多客户",
       clientsText: "信任我们",
       shipments: "10,000多次",
-      shipmentsText: "成功完成的运输"
+      shipmentsText: "成功完成的运输",
+      supplyProgram: "查看供应计划"
     },
     contact: {
       title: "联系我们",

@@ -1,4 +1,3 @@
-
 export const tr = {
   common: {
     loading: "Yükleniyor...",
@@ -16,7 +15,8 @@ export const tr = {
     success: "Başarılı!",
     error: "Hata!",
     successMessage: "Mesajınız başarıyla gönderildi. En kısa sürede sizinle iletişime geçeceğiz.",
-    errorMessage: "Mesajınızı gönderirken bir hata oluştu. Lütfen daha sonra tekrar deneyin."
+    errorMessage: "Mesajınızı gönderirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+    supplyProgram: "Tedarik Programını Görüntüle"
   },
   nav: {
     home: "Ana Sayfa",
@@ -95,7 +95,8 @@ export const tr = {
       clients: "500+ müşteri",
       clientsText: "bize güveniyor",
       shipments: "10,000+ sevkiyat",
-      shipmentsText: "başarıyla tamamlandı"
+      shipmentsText: "başarıyla tamamlandı",
+      supplyProgram: "Tedarik Programını Görüntüle"
     },
     contact: {
       title: "Bize Ulaşın",
