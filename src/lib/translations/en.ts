@@ -1,3 +1,4 @@
+
 export const en = {
   common: {
     loading: "Loading...",
@@ -15,8 +16,7 @@ export const en = {
     success: "Success!",
     error: "Error!",
     successMessage: "Your message has been successfully sent. We will contact you soon.",
-    errorMessage: "An error occurred while sending your message. Please try again later.",
-    supplyProgram: "View Supply Program"
+    errorMessage: "An error occurred while sending your message. Please try again later."
   },
   nav: {
     home: "Home",
@@ -95,8 +95,7 @@ export const en = {
       clients: "500+ clients",
       clientsText: "trust us",
       shipments: "10,000+ shipments",
-      shipmentsText: "successfully completed",
-      supplyProgram: "View Supply Program"
+      shipmentsText: "successfully completed"
     },
     contact: {
       title: "Contact Us",

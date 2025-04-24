@@ -18,7 +18,7 @@ const Logo = ({ className = "", onClick }: LogoProps) => {
   
   // Выбираем логотип в зависимости от темы
   const logoSrc = isDarkTheme 
-    ? "/lovable-uploads/fa8a27a2-dbaa-4134-909c-8aabee292780.png" 
+    ? "/lovable-uploads/wit_line_white.png" 
     : "/lovable-uploads/34a5c9ef-abdf-4c12-811a-b5e37451a3dd.png";
   
   // Обработчик клика по логотипу
