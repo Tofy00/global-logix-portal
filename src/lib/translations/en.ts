@@ -1,3 +1,4 @@
+
 export const en = {
   common: {
     loading: "Loading...",
@@ -81,7 +82,6 @@ export const en = {
     about: {
       title: "Your Component Supplier from Abroad",
       subtitle: "We are a reliable partner for Russian companies that need quality electronic components without delays and extra costs.",
-      supplyProgramButton: "View Supply Program",
       offices: "Offices in China and Turkey",
       officesText: "We are closer to production and respond faster to your tasks.",
       components: "Range of Components",

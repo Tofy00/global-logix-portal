@@ -1,3 +1,4 @@
+
 export const tr = {
   common: {
     loading: "Yükleniyor...",
@@ -81,7 +82,6 @@ export const tr = {
     about: {
       title: "Yurtdışından Bileşen Tedarikçiniz",
       subtitle: "Gecikmeler ve ekstra maliyetler olmadan kaliteli elektronik bileşenlere ihtiyaç duyan Rus şirketleri için güvenilir bir ortağız.",
-      supplyProgramButton: "Tedarik Programını Görüntüle",
       offices: "Çin ve Türkiye'de Ofisler",
       officesText: "Üretime daha yakınız ve görevlerinize daha hızlı yanıt veriyoruz.",
       components: "Bileşen Yelpazesi",

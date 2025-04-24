@@ -1,8 +1,8 @@
+
 import { useLanguage } from "@/components/LanguageProvider";
 import { Card, CardContent } from "@/components/ui/card";
-import { Building, BoxesIcon, CircleDashed } from "lucide-react";
+import { Building, BoxesIcon, Boxes, CircleDashed } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
-import SupplyProgramButton from "@/components/SupplyProgramButton";
 
 const AboutSection = () => {
   const { t } = useLanguage();
@@ -97,13 +97,6 @@ const AboutSection = () => {
               </div>
             </ScrollReveal>
           ))}
-        </div>
-
-        {/* Supply Program Button */}
-        <div className="flex justify-center">
-          <ScrollReveal delay={500}>
-            <SupplyProgramButton />
-          </ScrollReveal>
         </div>
       </div>
     </section>

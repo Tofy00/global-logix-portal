@@ -1,3 +1,4 @@
+
 export const zh = {
   common: {
     loading: "加载中...",
@@ -81,7 +82,6 @@ export const zh = {
     about: {
       title: "您的海外零部件供应商",
       subtitle: "我们是俄罗斯公司的可靠合作伙伴，为需要无延迟和额外成本获得优质电子零部件的公司提供服务",
-      supplyProgramButton: "查看供应计划",
       offices: "中国和土耳其办事处",
       officesText: "我们更接近生产，更快地响应您的任务",
       components: "零部件范围",
@@ -103,7 +103,7 @@ export const zh = {
       moscow: "莫斯科办公室",
       moscowAddress: "维尔纳茨基大道，41号，1号楼（莫斯科地区消费者联盟）",
       china: "中国",
-      chinaAddress: "中国上海电子��道123号，200000",
+      chinaAddress: "中国上海电子大道123号，200000",
       turkey: "土耳其",
       turkeyAddress: "土耳其伊斯坦布尔组件街456号，34000",
       emailTitle: "电子邮件",
