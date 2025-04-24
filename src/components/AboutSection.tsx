@@ -1,7 +1,7 @@
-
 import { useLanguage } from "@/components/LanguageProvider";
 import { Card, CardContent } from "@/components/ui/card";
-import { Building, BoxesIcon, Boxes, CircleDashed } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Building, BoxesIcon, Boxes, CircleDashed, FileImage } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const AboutSection = () => {
@@ -48,6 +48,10 @@ const AboutSection = () => {
     },
   ];
 
+  const handleOpenSupplyProgram = () => {
+    window.open("/lovable-uploads/326a266b-1ec5-448b-980e-1870148cca4e.png", "_blank");
+  };
+
   return (
     <section id="about" className="py-24 bg-muted/30">
       <div className="container px-4 mx-auto">
@@ -64,7 +68,6 @@ const AboutSection = () => {
           </ScrollReveal>
         </div>
 
-        {/* Features */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {features.map((feature, index) => (
             <ScrollReveal key={index} delay={200 + index * 100}>
@@ -83,8 +86,7 @@ const AboutSection = () => {
           ))}
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-12">
           {stats.map((stat, index) => (
             <ScrollReveal key={index} delay={stat.delay}>
               <div className="bg-background rounded-lg p-6 text-center shadow-sm hover:shadow-primary/60 dark:hover:shadow-primary/40 hover:scale-[1.03] transition-all duration-300 card-glow">
@@ -98,6 +100,20 @@ const AboutSection = () => {
             </ScrollReveal>
           ))}
         </div>
+
+        <ScrollReveal delay={500}>
+          <div className="flex justify-center mt-8">
+            <Button
+              onClick={handleOpenSupplyProgram}
+              variant="outline"
+              size="lg"
+              className="group transition-all duration-300 hover:scale-105"
+            >
+              <FileImage className="mr-2 h-4 w-4" />
+              {t("home.about.viewSupplyProgram")}
+            </Button>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
