@@ -1,3 +1,4 @@
+
 export const en = {
   common: {
     loading: "Loading...",
@@ -94,8 +95,7 @@ export const en = {
       clients: "500+ clients",
       clientsText: "trust us",
       shipments: "10,000+ shipments",
-      shipmentsText: "successfully completed",
-      viewSupplyProgram: "View Supply Program"
+      shipmentsText: "successfully completed"
     },
     contact: {
       title: "Contact Us",

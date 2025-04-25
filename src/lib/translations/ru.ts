@@ -1,3 +1,4 @@
+
 export const ru = {
   common: {
     loading: "Загрузка...",
@@ -94,8 +95,7 @@ export const ru = {
       clients: "500+ клиентов",
       clientsText: "доверяют нам",
       shipments: "10,000+ поставок",
-      shipmentsText: "успешно выполнено",
-      viewSupplyProgram: "Открыть программу поставок"
+      shipmentsText: "успешно выполнено"
     },
     contact: {
       title: "Свяжитесь с нами",

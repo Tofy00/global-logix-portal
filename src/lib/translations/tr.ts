@@ -1,3 +1,4 @@
+
 export const tr = {
   common: {
     loading: "Yükleniyor...",
@@ -94,8 +95,7 @@ export const tr = {
       clients: "500+ müşteri",
       clientsText: "bize güveniyor",
       shipments: "10,000+ sevkiyat",
-      shipmentsText: "başarıyla tamamlandı",
-      viewSupplyProgram: "Tedarik Programını Görüntüle"
+      shipmentsText: "başarıyla tamamlandı"
     },
     contact: {
       title: "Bize Ulaşın",
