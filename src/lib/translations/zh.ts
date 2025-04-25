@@ -1,4 +1,3 @@
-
 export const zh = {
   common: {
     loading: "加载中...",
@@ -95,7 +94,8 @@ export const zh = {
       clients: "500多客户",
       clientsText: "信任我们",
       shipments: "10,000多次",
-      shipmentsText: "成功完成的运输"
+      shipmentsText: "成功完成的运输",
+      viewSupplyProgram: "查看供应计划"
     },
     contact: {
       title: "联系我们",
