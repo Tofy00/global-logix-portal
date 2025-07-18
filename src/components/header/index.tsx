@@ -20,7 +20,6 @@ const Header = () => {
     { id: "about", label: t("nav.about"), path: "/#about", section: "about" },
     { id: "team", label: t("nav.team"), path: "/#team", section: "team" },
     { id: "contact", label: t("nav.contact"), path: "/#contact", section: "contact" },
-    { id: "catalog", label: t("nav.catalog"), path: "/catalog", section: "" },
   ];
 
   useEffect(() => {

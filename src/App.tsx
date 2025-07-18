@@ -9,7 +9,6 @@ import { LanguageProvider } from "@/components/LanguageProvider";
 import Header from "@/components/header";
 import Footer from "@/components/Footer";
 import Index from "./pages/Index";
-import Catalog from "./pages/Catalog";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,7 +26,6 @@ const App = () => (
               <main className="flex-1">
                 <Routes>
                   <Route path="/" element={<Index />} />
-                  <Route path="/catalog" element={<Catalog />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
