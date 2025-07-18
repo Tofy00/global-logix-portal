@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useLanguage } from "@/components/LanguageProvider";
+import { smoothScrollTo, smoothScrollToTop } from "@/lib/smoothScroll";
 import NavItem from "./NavItem";
 import HeaderControls from "./HeaderControls";
 import MobileMenu from "./MobileMenu";
@@ -24,21 +25,18 @@ const Header = () => {
   ];
 
   useEffect(() => {
-    // Handle navigation to home page with hash from other pages
-    if (location.pathname === '/') {
+    const handleHashNavigation = async () => {
       const hash = location.hash.replace('#', '');
-      if (hash) {
-        const element = document.getElementById(hash);
-        if (element) {
-          setTimeout(() => {
-            element.scrollIntoView({ behavior: "smooth" });
-          }, 100);
-        }
+      if (hash && location.pathname === '/') {
+        // Используем утилитарную функцию для надежного скроллинга
+        await smoothScrollTo(hash);
+      } else if (location.pathname !== '/') {
+        // Только для non-home страниц скроллим вверх
+        window.scrollTo(0, 0);
       }
-    } else {
-      // Only scroll to top when navigating to non-home pages
-      window.scrollTo(0, 0);
-    }
+    };
+
+    handleHashNavigation();
   }, [location.pathname, location.hash]);
 
   useEffect(() => {
@@ -76,13 +74,13 @@ const Header = () => {
     };
   }, [location.pathname, lastScrollY]);
 
-  const handleNavLinkClick = (section: string, path: string) => {
+  const handleNavLinkClick = async (section: string, path: string) => {
     setIsMenuOpen(false);
     
     if (path === "/" && section === "hero") {
       // Handle home navigation
       if (location.pathname === "/") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        smoothScrollToTop();
       } else {
         navigate("/");
       }
@@ -90,10 +88,7 @@ const Header = () => {
       // Handle section navigation
       if (location.pathname === "/") {
         // Already on home page, just scroll to section
-        const element = document.getElementById(section);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
+        await smoothScrollTo(section);
       } else {
         // Navigate to home page with hash
         navigate(`/#${section}`);

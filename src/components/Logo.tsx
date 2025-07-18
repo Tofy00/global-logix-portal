@@ -2,6 +2,7 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTheme } from "@/components/ThemeProvider";
 import { useEffect, useState } from "react";
+import { smoothScrollToTop } from "@/lib/smoothScroll";
 
 interface LogoProps {
   className?: string;
@@ -64,8 +65,8 @@ const Logo = ({ className = "", onClick }: LogoProps) => {
       // Если не на главной странице, перенаправляем на главную
       navigate('/');
     } else {
-      // Если на главной, просто прокручиваем в начало страницы
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Если на главной, просто прокручиваем в начало страницы с плавной анимацией
+      smoothScrollToTop();
     }
   };
   

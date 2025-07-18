@@ -81,11 +81,26 @@
   
   html {
     @apply scroll-smooth;
+    scroll-behavior: smooth;
   }
   
   body {
     @apply bg-background text-foreground font-sans antialiased;
     transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Улучшенная поддержка плавного скроллинга для всех браузеров */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  
+  /* Fallback для браузеров без поддержки scroll-behavior */
+  @supports not (scroll-behavior: smooth) {
+    html {
+      scroll-behavior: auto;
+    }
   }
   
   /* Smooth transitions for all theme-related colors */

@@ -1,6 +1,7 @@
 
 import { useLocation, useNavigate } from "react-router-dom";
 import { useLanguage } from "@/components/LanguageProvider";
+import { smoothScrollTo, smoothScrollToTop } from "@/lib/smoothScroll";
 import { Separator } from "@/components/ui/separator";
 import { Mail, Phone, MapPin } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -11,20 +12,17 @@ const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
   
-  const handleNavigation = (path: string) => {
+  const handleNavigation = async (path: string) => {
     if (path.startsWith('/#')) {
       // Handle anchors on the home page
       const anchor = path.replace('/#', '');
       
       if (location.pathname !== '/') {
         // If not on home page, navigate to home page first with the anchor
-        navigate('/', { state: { scrollToId: anchor } });
+        navigate(`/#${anchor}`);
       } else {
         // If already on home page, just scroll to the section
-        const element = document.getElementById(anchor);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
+        await smoothScrollTo(anchor);
       }
     } else {
       // Regular navigation to other pages
@@ -66,7 +64,11 @@ const Footer = () => {
             {/* Company Logo */}
             <div className="flex flex-col space-y-6 items-center md:items-start">
               <Logo className="mb-2" onClick={() => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if (location.pathname === '/') {
+                  smoothScrollToTop();
+                } else {
+                  navigate('/');
+                }
               }} />
             </div>
 
