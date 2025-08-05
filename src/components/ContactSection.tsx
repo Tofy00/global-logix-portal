@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
 import { Button } from "@/components/ui/button";
@@ -19,38 +18,82 @@ const ContactSection = () => {
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // In a real app, here you would send this to your backend
-    console.log("Contact form submitted:", { name, email, subject, message });
-    
-    // Simulate API call with timeout
-    setTimeout(() => {
-      // Show success notification with Sonner toast
-      toast.success(
+    try {
+      const formData = new URLSearchParams();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('subject', subject);
+      formData.append('message', message);
+
+      const response = await fetch('http://api.witline.ru:8000/feedback', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        }
+      });
+
+      if (response.ok) {
+        // Show success notification with Sonner toast
+        toast.success(
+          <div className="flex items-center gap-2">
+            <CheckCircle className="h-5 w-5 text-green-500" />
+            <div className="flex flex-col">
+              <span className="font-medium">{t("common.success")}</span>
+              <span className="text-sm text-muted-foreground">{t("common.successMessage")}</span>
+            </div>
+          </div>,
+          {
+            duration: 5000,
+            position: "top-center",
+            className: "border-2 border-primary/20 shadow-lg",
+          }
+        );
+        
+        // Reset form
+        setName("");
+        setEmail("");
+        setSubject("");
+        setMessage("");
+      } else {
+        // Show error notification
+        toast.error(
+          <div className="flex items-center gap-2">
+            <div className="flex flex-col">
+              <span className="font-medium">{t("common.error")}</span>
+              <span className="text-sm text-muted-foreground">Ошибка отправки. Попробуйте позже.</span>
+            </div>
+          </div>,
+          {
+            duration: 5000,
+            position: "top-center",
+            className: "border-2 border-red-500/20 shadow-lg",
+          }
+        );
+      }
+    } catch (error) {
+      console.error("Contact form error:", error);
+      // Show network error notification
+      toast.error(
         <div className="flex items-center gap-2">
-          <CheckCircle className="h-5 w-5 text-green-500" />
           <div className="flex flex-col">
-            <span className="font-medium">{t("common.success")}</span>
-            <span className="text-sm text-muted-foreground">{t("common.successMessage")}</span>
+            <span className="font-medium">{t("common.error")}</span>
+            <span className="text-sm text-muted-foreground">Не удалось подключиться к серверу.</span>
           </div>
         </div>,
         {
-          duration: 5000, // 5 seconds
+          duration: 5000,
           position: "top-center",
-          className: "border-2 border-primary/20 shadow-lg",
+          className: "border-2 border-red-500/20 shadow-lg",
         }
       );
-      
-      // Reset form
-      setName("");
-      setEmail("");
-      setSubject("");
-      setMessage("");
+    } finally {
       setIsSubmitting(false);
-    }, 800); // Simulate network delay for better UX
+    }
   };
 
   const contactInfo = [
