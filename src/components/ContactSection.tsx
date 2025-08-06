@@ -13,6 +13,7 @@ const ContactSection = () => {
   
   // Contact form state
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   
@@ -23,6 +24,7 @@ const ContactSection = () => {
     try {
       const formData = new FormData();
       formData.append('name', name);
+      formData.append('email', email);
       formData.append('message', message);
 
       const response = await fetch('https://witline.ru/feedback', {
@@ -37,7 +39,7 @@ const ContactSection = () => {
             <CheckCircle className="h-5 w-5 text-green-500" />
             <div className="flex flex-col">
               <span className="font-medium">Успешно!</span>
-              <span className="text-sm text-muted-foreground">Сообщение отправлено</span>
+              <span className="text-sm text-muted-foreground">Ваше сообщение отправлено</span>
             </div>
           </div>,
           {
@@ -49,6 +51,7 @@ const ContactSection = () => {
         
         // Reset form
         setName("");
+        setEmail("");
         setMessage("");
       } else {
         // Show error notification
@@ -173,6 +176,17 @@ const ContactSection = () => {
                       placeholder={t("home.contact.namePlaceholder")}
                       value={name}
                       onChange={(e) => setName(e.target.value)}
+                      required
+                      className="bg-background transition-all duration-300 hover:border-primary focus:border-primary"
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                  <div className="transform transition-all duration-300 hover:translate-x-1">
+                    <Input
+                      type="email"
+                      placeholder={t("home.contact.emailPlaceholder")}
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       required
                       className="bg-background transition-all duration-300 hover:border-primary focus:border-primary"
                       disabled={isSubmitting}
