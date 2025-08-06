@@ -27,7 +27,7 @@ const ContactSection = () => {
       formData.append('email', email);
       formData.append('message', message);
 
-      const response = await fetch('https://witline.ru/feedback', {
+      const response = await fetch('http://localhost:8000/feedback', {
         method: 'POST',
         body: formData,
       });
@@ -184,7 +184,7 @@ const ContactSection = () => {
                   <div className="transform transition-all duration-300 hover:translate-x-1">
                     <Input
                       type="email"
-                      placeholder={t("home.contact.emailPlaceholder")}
+                      placeholder="Ваш email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
