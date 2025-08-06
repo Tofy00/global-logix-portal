@@ -23,42 +23,40 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      const formData = new URLSearchParams();
+      const formData = new FormData();
       formData.append('name', name);
-      formData.append('email', email);
-      formData.append('subject', subject);
       formData.append('message', message);
 
-      const response = await fetch('http://api.witline.ru:8000/feedback', {
+      const response = await fetch('http://localhost:8000/feedback', {
         method: 'POST',
         body: formData,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        }
       });
 
       if (response.ok) {
-        // Show success notification with Sonner toast
-        toast.success(
-          <div className="flex items-center gap-2">
-            <CheckCircle className="h-5 w-5 text-green-500" />
-            <div className="flex flex-col">
-              <span className="font-medium">{t("common.success")}</span>
-              <span className="text-sm text-muted-foreground">{t("common.successMessage")}</span>
-            </div>
-          </div>,
-          {
-            duration: 5000,
-            position: "top-center",
-            className: "border-2 border-primary/20 shadow-lg",
-          }
-        );
-        
-        // Reset form
-        setName("");
-        setEmail("");
-        setSubject("");
-        setMessage("");
+        const result = await response.json();
+        if (result.status === 'received') {
+          // Show success notification with Sonner toast
+          toast.success(
+            <div className="flex items-center gap-2">
+              <CheckCircle className="h-5 w-5 text-green-500" />
+              <div className="flex flex-col">
+                <span className="font-medium">{t("common.success")}</span>
+                <span className="text-sm text-muted-foreground">{t("common.successMessage")}</span>
+              </div>
+            </div>,
+            {
+              duration: 5000,
+              position: "top-center",
+              className: "border-2 border-primary/20 shadow-lg",
+            }
+          );
+          
+          // Reset form
+          setName("");
+          setEmail("");
+          setSubject("");
+          setMessage("");
+        }
       } else {
         // Show error notification
         toast.error(
