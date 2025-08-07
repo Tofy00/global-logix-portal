@@ -17,79 +17,31 @@ const ContactSection = () => {
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  const handleContactSubmit = async (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     
+    const formData = new FormData(e.currentTarget);
+    
     try {
-      const formData = new FormData();
-      formData.append('name', name);
-      formData.append('email', email);
-      formData.append('message', message);
-
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://77.110.126.31';
-      const response = await fetch(`${apiUrl}/feedback`, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Accept': 'application/json',
-        },
+      const response = await fetch("http://api.witline.ru:8000/feedback", {
+        method: "POST",
         body: formData,
       });
 
       if (response.ok) {
-        // Show success notification
-        toast.success(
-          <div className="flex items-center gap-2">
-            <CheckCircle className="h-5 w-5 text-green-500" />
-            <div className="flex flex-col">
-              <span className="font-medium">Успешно!</span>
-              <span className="text-sm text-muted-foreground">Ваше сообщение отправлено</span>
-            </div>
-          </div>,
-          {
-            duration: 5000,
-            position: "top-center",
-            className: "border-2 border-primary/20 shadow-lg",
-          }
-        );
+        alert("Спасибо! Ваше сообщение отправлено.");
         
         // Reset form
         setName("");
         setEmail("");
         setMessage("");
       } else {
-        // Show error notification
-        toast.error(
-          <div className="flex items-center gap-2">
-            <div className="flex flex-col">
-              <span className="font-medium">{t("common.error")}</span>
-              <span className="text-sm text-muted-foreground">Ошибка отправки. Попробуйте позже.</span>
-            </div>
-          </div>,
-          {
-            duration: 5000,
-            position: "top-center",
-            className: "border-2 border-red-500/20 shadow-lg",
-          }
-        );
+        alert("Ошибка при отправке.");
       }
     } catch (error) {
-      console.error("Contact form error:", error);
-      // Show network error notification
-      toast.error(
-        <div className="flex items-center gap-2">
-          <div className="flex flex-col">
-            <span className="font-medium">{t("common.error")}</span>
-            <span className="text-sm text-muted-foreground">Не удалось подключиться к серверу.</span>
-          </div>
-        </div>,
-        {
-          duration: 5000,
-          position: "top-center",
-          className: "border-2 border-red-500/20 shadow-lg",
-        }
-      );
+      console.error("Ошибка:", error);
+      alert("Ошибка соединения с сервером.");
     } finally {
       setIsSubmitting(false);
     }
@@ -178,6 +130,7 @@ const ContactSection = () => {
                   <div className="transform transition-all duration-300 hover:translate-x-1">
                     <Input
                       type="text"
+                      name="name"
                       placeholder={t("home.contact.namePlaceholder")}
                       value={name}
                       onChange={(e) => setName(e.target.value)}
@@ -189,6 +142,7 @@ const ContactSection = () => {
                   <div className="transform transition-all duration-300 hover:translate-x-1">
                     <Input
                       type="email"
+                      name="email"
                       placeholder="Ваш email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -199,6 +153,7 @@ const ContactSection = () => {
                   </div>
                   <div className="transform transition-all duration-300 hover:translate-x-1">
                     <Textarea
+                      name="message"
                       placeholder={t("home.contact.messagePlaceholder")}
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
