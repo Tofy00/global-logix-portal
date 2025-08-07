@@ -27,7 +27,7 @@ const ContactSection = () => {
       formData.append('email', email);
       formData.append('message', message);
 
-      const response = await fetch('http://77.110.126.31:8000/feedback', {
+      const response = await fetch('/feedback', {
         method: 'POST',
         body: formData,
       });
