@@ -24,7 +24,7 @@ const ContactSection = () => {
     const formData = new FormData(e.currentTarget);
     
     try {
-      const response = await fetch("http://api.witline.ru:8000/feedback", {
+      const response = await fetch("https://api.witline.ru/feedback", {
         method: "POST",
         body: formData,
       });
