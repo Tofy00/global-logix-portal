@@ -27,8 +27,13 @@ const ContactSection = () => {
       formData.append('email', email);
       formData.append('message', message);
 
-      const response = await fetch('/feedback', {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://77.110.126.31';
+      const response = await fetch(`${apiUrl}/feedback`, {
         method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Accept': 'application/json',
+        },
         body: formData,
       });
 
