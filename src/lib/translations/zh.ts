@@ -22,8 +22,7 @@ export const zh = {
     services: "服务",
     about: "关于我们",
     team: "团队",
-    contact: "联系我们",
-    catalog: "目录"
+    contact: "联系我们"
   },
   home: {
     hero: {
@@ -125,31 +124,6 @@ export const zh = {
       telegramMessagePlaceholder: "您的留言",
       telegramButton: "发送"
     }
-  },
-  catalog: {
-    title: "元件目录",
-    subtitle: "各种原装电子元件的广泛选择",
-    search: "搜索",
-    categories: "类别",
-    filters: "筛选",
-    all: "全部",
-    sort: "排序",
-    priceAsc: "价格（升序）",
-    priceDesc: "价格（降序）",
-    nameAsc: "名称（A-Z）",
-    nameDesc: "名称（Z-A）",
-    category1: "微控制器",
-    category2: "晶体管",
-    category3: "电阻器",
-    category4: "电容器",
-    category5: "电感器",
-    noResults: "未找到符合您查询的结果",
-    price: "价格",
-    availability: "库存情况",
-    inStock: "有货",
-    outOfStock: "预订",
-    addToCart: "添加到购物车",
-    moreDetails: "更多详情"
   },
   footer: {
     company: "公司",

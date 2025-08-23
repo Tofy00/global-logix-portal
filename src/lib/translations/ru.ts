@@ -22,8 +22,7 @@ export const ru = {
     services: "Услуги",
     about: "О нас",
     team: "Команда",
-    contact: "Контакты",
-    catalog: "Каталог"
+    contact: "Контакты"
   },
   home: {
     hero: {
@@ -125,31 +124,6 @@ export const ru = {
       telegramMessagePlaceholder: "Ваше сообщение",
       telegramButton: "Отправить"
     }
-  },
-  catalog: {
-    title: "Каталог компонентов",
-    subtitle: "Широкий выбор оригинальных электронных компонентов",
-    search: "Поиск",
-    categories: "Категории",
-    filters: "Фильтры",
-    all: "Все",
-    sort: "Сортировать",
-    priceAsc: "Цена (возр.)",
-    priceDesc: "Цена (убыв.)",
-    nameAsc: "Название (А-Я)",
-    nameDesc: "Название (Я-А)",
-    category1: "Микроконтроллеры",
-    category2: "Транзисторы",
-    category3: "Резисторы",
-    category4: "Конденсаторы",
-    category5: "Индуктивности",
-    noResults: "Не найдено результатов по вашему запросу",
-    price: "Цена",
-    availability: "Наличие",
-    inStock: "В наличии",
-    outOfStock: "Под заказ",
-    addToCart: "Добавить в корзину",
-    moreDetails: "Подробнее"
   },
   footer: {
     company: "Компания",
