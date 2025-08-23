@@ -18,7 +18,6 @@ const Header = () => {
 
   const navItems = [
     { id: "home", label: t("nav.home"), path: "/", section: "hero" },
-    { id: "catalog", label: t("nav.catalog"), path: "/#catalog", section: "catalog" },
     { id: "services", label: t("nav.services"), path: "/#services", section: "services" },
     { id: "about", label: t("nav.about"), path: "/#about", section: "about" },
     { id: "team", label: t("nav.team"), path: "/#team", section: "team" },
@@ -48,7 +47,7 @@ const Header = () => {
       setLastScrollY(scrollPosition);
       
       if (location.pathname === "/") {
-        const sections = ["hero", "catalog", "services", "about", "team", "contact"];
+        const sections = ["hero", "services", "about", "team", "contact"];
         
         for (const section of sections) {
           const element = document.getElementById(section);

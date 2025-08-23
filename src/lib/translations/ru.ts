@@ -19,7 +19,6 @@ export const ru = {
   },
   nav: {
     home: "Главная",
-    catalog: "Каталог",
     services: "Услуги",
     about: "О нас",
     team: "Команда",
@@ -96,34 +95,6 @@ export const ru = {
       shipments: "10,000+ поставок",
       shipmentsText: "успешно выполнено",
       viewSupplyProgram: "Открыть программу поставок"
-    },
-    catalog: {
-      title: "Каталог электронных компонентов",
-      subtitle: "Широкий ассортимент качественных компонентов от ведущих мировых производителей",
-      processors: {
-        title: "Микропроцессоры",
-        description: "ARM, x86, микроконтроллеры от ведущих производителей"
-      },
-      memory: {
-        title: "Память",
-        description: "DDR, NAND Flash, EEPROM и другие типы памяти"
-      },
-      power: {
-        title: "Силовые компоненты",
-        description: "Транзисторы, диоды, модули питания и контроллеры"
-      },
-      wireless: {
-        title: "Беспроводные модули",
-        description: "Wi-Fi, Bluetooth, LoRa, Zigbee и другие решения"
-      },
-      sensors: {
-        title: "Датчики",
-        description: "Температурные, давления, движения и специализированные датчики"
-      },
-      passive: {
-        title: "Пассивные компоненты",
-        description: "Резисторы, конденсаторы, индуктивности, кристаллы"
-      }
     },
     contact: {
       title: "Свяжитесь с нами",

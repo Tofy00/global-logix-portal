@@ -19,7 +19,6 @@ export const tr = {
   },
   nav: {
     home: "Ana Sayfa",
-    catalog: "Katalog",
     services: "Hizmetler",
     about: "Hakkımızda",
     team: "Ekip",
@@ -96,34 +95,6 @@ export const tr = {
       shipments: "10,000+ sevkiyat",
       shipmentsText: "başarıyla tamamlandı",
       viewSupplyProgram: "Tedarik Programını Görüntüle"
-    },
-    catalog: {
-      title: "Elektronik Bileşen Katalogu",
-      subtitle: "Önde gelen küresel üreticilerden geniş kaliteli bileşen yelpazesi",
-      processors: {
-        title: "Mikroişlemciler",
-        description: "Önde gelen üreticilerden ARM, x86, mikrodenetleyiciler"
-      },
-      memory: {
-        title: "Bellek",
-        description: "DDR, NAND Flash, EEPROM ve diğer bellek türleri"
-      },
-      power: {
-        title: "Güç Bileşenleri",
-        description: "Transistörler, diyotlar, güç modülleri ve kontrolcüler"
-      },
-      wireless: {
-        title: "Kablosuz Modüller",
-        description: "Wi-Fi, Bluetooth, LoRa, Zigbee ve diğer çözümler"
-      },
-      sensors: {
-        title: "Sensörler",
-        description: "Sıcaklık, basınç, hareket ve özel sensörler"
-      },
-      passive: {
-        title: "Pasif Bileşenler",
-        description: "Dirençler, kapasitörler, endüktörler, kristaller"
-      }
     },
     contact: {
       title: "Bize Ulaşın",
