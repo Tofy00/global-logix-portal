@@ -19,7 +19,6 @@ export const ru = {
   },
   nav: {
     home: "Главная",
-    catalog: "Каталог",
     services: "Услуги",
     about: "О нас",
     team: "Команда",

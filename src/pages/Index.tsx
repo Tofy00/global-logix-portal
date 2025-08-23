@@ -2,7 +2,6 @@
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import HeroSection from "@/components/HeroSection";
-import CatalogSection from "@/components/CatalogSection";
 import ServicesSection from "@/components/ServicesSection";
 import TeamSection from "@/components/TeamSection";
 import AboutSection from "@/components/AboutSection";
@@ -45,7 +44,6 @@ const Index = () => {
   return (
     <main className="flex flex-col">
       <HeroSection />
-      <CatalogSection />
       <ServicesSection />
       <AboutSection />
       <TeamSection />
