@@ -19,6 +19,7 @@ export const en = {
   },
   nav: {
     home: "Home",
+    catalog: "Catalog",
     services: "Services",
     about: "About",
     team: "Team",
@@ -95,6 +96,34 @@ export const en = {
       shipments: "10,000+ shipments",
       shipmentsText: "successfully completed",
       viewSupplyProgram: "View Supply Program"
+    },
+    catalog: {
+      title: "Electronic Components Catalog",
+      subtitle: "Wide range of quality components from leading global manufacturers",
+      processors: {
+        title: "Microprocessors",
+        description: "ARM, x86, microcontrollers from leading manufacturers"
+      },
+      memory: {
+        title: "Memory",
+        description: "DDR, NAND Flash, EEPROM and other memory types"
+      },
+      power: {
+        title: "Power Components",
+        description: "Transistors, diodes, power modules and controllers"
+      },
+      wireless: {
+        title: "Wireless Modules",
+        description: "Wi-Fi, Bluetooth, LoRa, Zigbee and other solutions"
+      },
+      sensors: {
+        title: "Sensors",
+        description: "Temperature, pressure, motion and specialized sensors"
+      },
+      passive: {
+        title: "Passive Components",
+        description: "Resistors, capacitors, inductors, crystals"
+      }
     },
     contact: {
       title: "Contact Us",
