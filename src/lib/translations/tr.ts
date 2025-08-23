@@ -22,7 +22,8 @@ export const tr = {
     services: "Hizmetler",
     about: "Hakkımızda",
     team: "Ekip",
-    contact: "İletişim"
+    contact: "İletişim",
+    catalog: "Katalog"
   },
   home: {
     hero: {
@@ -124,6 +125,31 @@ export const tr = {
       telegramMessagePlaceholder: "Mesajınız",
       telegramButton: "Gönder"
     }
+  },
+  catalog: {
+    title: "Bileşen Kataloğu",
+    subtitle: "Geniş orijinal elektronik bileşen seçkisi",
+    search: "Ara",
+    categories: "Kategoriler",
+    filters: "Filtreler",
+    all: "Tümü",
+    sort: "Sırala",
+    priceAsc: "Fiyat (artan)",
+    priceDesc: "Fiyat (azalan)",
+    nameAsc: "İsim (A-Z)",
+    nameDesc: "İsim (Z-A)",
+    category1: "Mikrodenetleyiciler",
+    category2: "Transistörler",
+    category3: "Dirençler",
+    category4: "Kapasitörler",
+    category5: "İndüktörler",
+    noResults: "Sorgunuza uygun sonuç bulunamadı",
+    price: "Fiyat",
+    availability: "Stok Durumu",
+    inStock: "Stokta var",
+    outOfStock: "Sipariş üzerine",
+    addToCart: "Sepete ekle",
+    moreDetails: "Daha fazla detay"
   },
   footer: {
     company: "Şirket",

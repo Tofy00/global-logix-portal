@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
 import { Button } from "@/components/ui/button";
@@ -14,37 +15,42 @@ const ContactSection = () => {
   // Contact form state
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    const formData = new FormData(e.currentTarget);
+    // In a real app, here you would send this to your backend
+    console.log("Contact form submitted:", { name, email, subject, message });
     
-    try {
-      const response = await fetch("https://api.witline.ru/feedback", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        alert("Спасибо! Ваше сообщение отправлено.");
-        
-        // Reset form
-        setName("");
-        setEmail("");
-        setMessage("");
-      } else {
-        alert("Ошибка при отправке.");
-      }
-    } catch (error) {
-      console.error("Ошибка:", error);
-      alert("Ошибка соединения с сервером.");
-    } finally {
+    // Simulate API call with timeout
+    setTimeout(() => {
+      // Show success notification with Sonner toast
+      toast.success(
+        <div className="flex items-center gap-2">
+          <CheckCircle className="h-5 w-5 text-green-500" />
+          <div className="flex flex-col">
+            <span className="font-medium">{t("common.success")}</span>
+            <span className="text-sm text-muted-foreground">{t("common.successMessage")}</span>
+          </div>
+        </div>,
+        {
+          duration: 5000, // 5 seconds
+          position: "top-center",
+          className: "border-2 border-primary/20 shadow-lg",
+        }
+      );
+      
+      // Reset form
+      setName("");
+      setEmail("");
+      setSubject("");
+      setMessage("");
       setIsSubmitting(false);
-    }
+    }, 800); // Simulate network delay for better UX
   };
 
   const contactInfo = [
@@ -130,7 +136,6 @@ const ContactSection = () => {
                   <div className="transform transition-all duration-300 hover:translate-x-1">
                     <Input
                       type="text"
-                      name="name"
                       placeholder={t("home.contact.namePlaceholder")}
                       value={name}
                       onChange={(e) => setName(e.target.value)}
@@ -142,8 +147,7 @@ const ContactSection = () => {
                   <div className="transform transition-all duration-300 hover:translate-x-1">
                     <Input
                       type="email"
-                      name="email"
-                      placeholder="Ваш email"
+                      placeholder={t("home.contact.emailPlaceholder")}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
@@ -152,8 +156,18 @@ const ContactSection = () => {
                     />
                   </div>
                   <div className="transform transition-all duration-300 hover:translate-x-1">
+                    <Input
+                      type="text"
+                      placeholder={t("home.contact.subjectPlaceholder")}
+                      value={subject}
+                      onChange={(e) => setSubject(e.target.value)}
+                      required
+                      className="bg-background transition-all duration-300 hover:border-primary focus:border-primary"
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                  <div className="transform transition-all duration-300 hover:translate-x-1">
                     <Textarea
-                      name="message"
                       placeholder={t("home.contact.messagePlaceholder")}
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}

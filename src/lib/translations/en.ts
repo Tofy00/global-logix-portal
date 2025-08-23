@@ -22,7 +22,8 @@ export const en = {
     services: "Services",
     about: "About",
     team: "Team",
-    contact: "Contact"
+    contact: "Contact",
+    catalog: "Catalog"
   },
   home: {
     hero: {
@@ -124,6 +125,31 @@ export const en = {
       telegramMessagePlaceholder: "Your message",
       telegramButton: "Send"
     }
+  },
+  catalog: {
+    title: "Components Catalog",
+    subtitle: "Wide selection of original electronic components",
+    search: "Search",
+    categories: "Categories",
+    filters: "Filters",
+    all: "All",
+    sort: "Sort",
+    priceAsc: "Price (asc)",
+    priceDesc: "Price (desc)",
+    nameAsc: "Name (A-Z)",
+    nameDesc: "Name (Z-A)",
+    category1: "Microcontrollers",
+    category2: "Transistors",
+    category3: "Resistors",
+    category4: "Capacitors",
+    category5: "Inductors",
+    noResults: "No results found for your query",
+    price: "Price",
+    availability: "Availability",
+    inStock: "In stock",
+    outOfStock: "On order",
+    addToCart: "Add to cart",
+    moreDetails: "More details"
   },
   footer: {
     company: "Company",

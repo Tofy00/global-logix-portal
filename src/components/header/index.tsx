@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useLanguage } from "@/components/LanguageProvider";
-import { smoothScrollTo, smoothScrollToTop } from "@/lib/smoothScroll";
 import NavItem from "./NavItem";
 import HeaderControls from "./HeaderControls";
 import MobileMenu from "./MobileMenu";
@@ -9,7 +8,6 @@ import Logo from "@/components/Logo";
 
 const Header = () => {
   const { t } = useLanguage();
-  const navigate = useNavigate();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -22,22 +20,22 @@ const Header = () => {
     { id: "about", label: t("nav.about"), path: "/#about", section: "about" },
     { id: "team", label: t("nav.team"), path: "/#team", section: "team" },
     { id: "contact", label: t("nav.contact"), path: "/#contact", section: "contact" },
+    { id: "catalog", label: t("nav.catalog"), path: "/catalog", section: "" },
   ];
 
   useEffect(() => {
-    const handleHashNavigation = async () => {
-      const hash = location.hash.replace('#', '');
-      if (hash && location.pathname === '/') {
-        // Используем утилитарную функцию для надежного скроллинга
-        await smoothScrollTo(hash);
-      } else if (location.pathname !== '/') {
-        // Только для non-home страниц скроллим вверх
-        window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
+    
+    const hash = location.hash.replace('#', '');
+    if (hash && location.pathname === '/') {
+      const element = document.getElementById(hash);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
       }
-    };
-
-    handleHashNavigation();
-  }, [location.pathname, location.hash]);
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -74,28 +72,14 @@ const Header = () => {
     };
   }, [location.pathname, lastScrollY]);
 
-  const handleNavLinkClick = async (section: string, path: string) => {
+  const handleNavLinkClick = (section: string, path: string) => {
     setIsMenuOpen(false);
     
-    if (path === "/" && section === "hero") {
-      // Handle home navigation
-      if (location.pathname === "/") {
-        smoothScrollToTop();
-      } else {
-        navigate("/");
+    if (location.pathname === "/" && section) {
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
       }
-    } else if (path.startsWith("/#") && section) {
-      // Handle section navigation
-      if (location.pathname === "/") {
-        // Already on home page, just scroll to section
-        await smoothScrollTo(section);
-      } else {
-        // Navigate to home page with hash
-        navigate(`/#${section}`);
-      }
-    } else {
-      // Regular navigation
-      navigate(path);
     }
   };
 
@@ -145,7 +129,7 @@ const Header = () => {
         navItems={navItems}
         activeSection={activeSection}
         location={location}
-        onNavLinkClick={handleNavLinkClick}
+        onNavLinkClick={() => setIsMenuOpen(false)}
       />
     </header>
   );
